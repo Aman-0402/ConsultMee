@@ -5,6 +5,7 @@ Frontend lives in `../consultmee-react`.
 ## Run locally
 
 ```bash
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS cme CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
