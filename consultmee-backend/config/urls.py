@@ -19,8 +19,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from accounts.views import RegisterView, UserViewSet
+from rest_framework_simplejwt.views import TokenRefreshView
+from accounts.views import LoginView, MeView, RegisterView, UserViewSet
 from appointments.views import AppointmentViewSet
 from categories.views import CategoryViewSet
 from consultants.views import ConsultantProfileViewSet, ConsultantRatingViewSet
@@ -40,7 +40,8 @@ router.register('contact-messages', ContactMessageViewSet, basename='contact-mes
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/register/', RegisterView.as_view(), name='register'),
-    path('api/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/auth/token/', LoginView.as_view(), name='token_obtain_pair'),
     path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/auth/me/', MeView.as_view(), name='me'),
     path('api/', include(router.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

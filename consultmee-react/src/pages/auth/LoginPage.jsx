@@ -4,10 +4,12 @@ import { motion } from 'framer-motion'
 import { FaArrowRight, FaEnvelope, FaEye, FaEyeSlash, FaLock, FaShieldHalved, FaUserTie } from 'react-icons/fa6'
 import Button from '../../components/ui/Button'
 import { useAuth } from '../../context/AuthContext'
+import { apiClient } from '../../services/apiClient'
 
 const roleConfig = {
   'solution-seeker': {
     label: 'Solution Seeker',
+    apiRole: 'solution_seeker',
     title: 'Login to ConsultME',
     subtitle: 'Access your consultants, appointments, projects, history, and profile dashboard.',
     signupTo: '/signup/solution-seeker',
@@ -18,6 +20,7 @@ const roleConfig = {
   },
   consultant: {
     label: 'Freelancer',
+    apiRole: 'consultant',
     title: 'Freelancer Login',
     subtitle: 'Manage your consultant profile, appointments, requests, and matching project opportunities.',
     signupTo: '/signup/consultant',
@@ -31,7 +34,7 @@ const roleConfig = {
 function LoginPage() {
   const { role } = useParams()
   const navigate = useNavigate()
-  const { setUser } = useAuth()
+  const { setAuthSession } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [status, setStatus] = useState(null)
   const config = useMemo(() => roleConfig[role], [role])
@@ -42,7 +45,7 @@ function LoginPage() {
 
   const RoleIcon = config.icon
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     const email = String(formData.get('email') || '').trim()
@@ -53,12 +56,26 @@ function LoginPage() {
       return
     }
 
-    setStatus({ type: 'success', message: 'Login validated in frontend demo mode. Redirecting...' })
-    setUser({ email, role, name: config.label })
+    setStatus({ type: 'loading', message: 'Signing you in...' })
 
-    window.setTimeout(() => {
+    try {
+      const { data } = await apiClient.post('/auth/token/', {
+        email,
+        password,
+        role: config.apiRole,
+      })
+
+      setAuthSession(data)
+      setStatus({ type: 'success', message: 'Login successful. Redirecting...' })
       navigate(config.dashboardTo)
-    }, 650)
+    } catch (error) {
+      const detail = error.response?.data?.detail
+      const firstFieldError = error.response?.data && Object.values(error.response.data)?.[0]
+      setStatus({
+        type: 'error',
+        message: Array.isArray(firstFieldError) ? firstFieldError[0] : detail || 'Login failed. Please check your credentials.',
+      })
+    }
   }
 
   return (
@@ -92,7 +109,7 @@ function LoginPage() {
             <div className="mb-8">
               <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-600">Welcome Back</p>
               <h2 className="mt-3 text-3xl font-black text-slate-950">Sign in securely</h2>
-              <p className="mt-2 text-sm text-slate-500">Backend authentication will be connected later.</p>
+              <p className="mt-2 text-sm text-slate-500">Secure Django JWT authentication connected to MySQL.</p>
             </div>
 
             {status ? (
