@@ -4,6 +4,7 @@ import PublicLayout from '../layouts/PublicLayout'
 import AuthChoicePage from '../pages/auth/AuthChoicePage'
 import PlaceholderPage from '../pages/PlaceholderPage'
 import DashboardHome from '../pages/dashboard/DashboardHome'
+import AboutPage from '../pages/marketing/AboutPage'
 import HomePage from '../pages/marketing/HomePage'
 import ServicesPage from '../pages/marketing/ServicesPage'
 
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
     children: [
       { path: '/', element: <HomePage /> },
       { path: '/services', element: <ServicesPage /> },
-      { path: '/about', element: <PlaceholderPage title="About ConsultME" /> },
+      { path: '/about', element: <AboutPage /> },
       { path: '/contact', element: <PlaceholderPage title="Contact ConsultME" /> },
       { path: '/create-account', element: <AuthChoicePage mode="signup" /> },
       { path: '/login-account', element: <AuthChoicePage mode="login" /> },
