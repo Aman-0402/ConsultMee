@@ -1,16 +1,21 @@
 import {
   FaBrain,
+  FaBoxOpen,
   FaBriefcase,
   FaCalendarCheck,
   FaChartLine,
   FaCircleCheck,
   FaClipboardList,
   FaEarthAsia,
+  FaGraduationCap,
   FaHandshake,
   FaIndianRupeeSign,
   FaLightbulb,
+  FaMicrochip,
   FaNetworkWired,
   FaPeopleGroup,
+  FaRocket,
+  FaUsersGear,
   FaUserTie,
   FaWandMagicSparkles,
 } from 'react-icons/fa6'
@@ -81,6 +86,39 @@ export const services = [
     title: 'Multi Industry Expertise',
     description: 'Access professionals across technology, legal, finance, healthcare, media, and more.',
     icon: FaEarthAsia,
+  },
+]
+
+export const inHouseServices = [
+  {
+    title: 'Startup Consultation',
+    description: 'Validate ideas, design business models, and launch startups with expert strategic guidance.',
+    icon: FaRocket,
+  },
+  {
+    title: 'AI Consultation',
+    description: 'Implement AI-driven automation, optimize workflows, and enhance business efficiency.',
+    icon: FaMicrochip,
+  },
+  {
+    title: 'Business Consultation',
+    description: 'Improve operations, scale growth strategies, and maximize profitability with expert insights.',
+    icon: FaBriefcase,
+  },
+  {
+    title: 'Training Consultation',
+    description: 'Design structured training programs, institutional frameworks, and learning systems effectively.',
+    icon: FaGraduationCap,
+  },
+  {
+    title: 'Product Consultation',
+    description: 'Plan, develop, and scale digital products with expert product strategy and roadmap guidance.',
+    icon: FaBoxOpen,
+  },
+  {
+    title: 'HR Consultation',
+    description: 'Build hiring systems, HR policies, and talent pipelines for sustainable workforce growth.',
+    icon: FaUsersGear,
   },
 ]
 

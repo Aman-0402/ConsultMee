@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FaBars, FaXmark } from 'react-icons/fa6'
 import logo from '../../assets/brand/logo.png'
 import { navLinks } from '../../data'
@@ -9,10 +10,16 @@ function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
-        <Link to="/" className="flex items-center">
-          <img src={logo} alt="ConsultME" className="h-14 w-auto object-contain" />
+    <header className="pointer-events-none sticky top-0 z-40 px-3 py-4 sm:px-5">
+      <motion.div
+        initial={{ opacity: 0, y: -18, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.45, ease: 'easeOut' }}
+        className="pointer-events-auto mx-auto flex max-w-7xl items-center justify-between rounded-[2rem] border border-blue-100/80 bg-white/82 px-4 py-3 shadow-[0_24px_70px_rgba(37,99,235,0.16)] backdrop-blur-2xl lg:px-5"
+      >
+        <Link to="/" className="group flex items-center">
+          <span className="absolute -z-10 h-12 w-28 rounded-full bg-blue-500/10 opacity-0 blur-xl transition group-hover:opacity-100" />
+          <img src={logo} alt="ConsultME" className="h-12 w-auto object-contain sm:h-14" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -21,7 +28,11 @@ function Header() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-sm font-bold transition ${isActive ? 'text-blue-700' : 'text-slate-700 hover:text-blue-700'}`
+                `relative rounded-full px-4 py-2 text-sm font-black transition ${
+                  isActive
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20'
+                    : 'text-slate-700 hover:bg-blue-50 hover:text-blue-700'
+                }`
               }
             >
               {link.label}
@@ -33,7 +44,7 @@ function Header() {
           <Button to="/create-account" variant="secondary" className="px-4 py-2">
             Signup
           </Button>
-          <Button to="/login-account" variant="dark" className="px-4 py-2">
+          <Button to="/login-account" className="bg-blue-950 px-4 py-2 text-white shadow-blue-950/20 hover:bg-blue-800">
             Login
           </Button>
         </div>
@@ -42,31 +53,48 @@ function Header() {
           type="button"
           aria-label="Toggle navigation"
           onClick={() => setOpen((value) => !value)}
-          className="rounded-lg border border-slate-200 p-3 text-slate-900 md:hidden"
+          className="rounded-full border border-blue-100 bg-blue-50 p-3 text-blue-950 shadow-sm md:hidden"
         >
           {open ? <FaXmark /> : <FaBars />}
         </button>
-      </div>
+      </motion.div>
 
-      {open ? (
-        <div className="border-t border-slate-200 bg-white px-4 py-4 md:hidden">
-          <nav className="flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <NavLink key={link.to} to={link.to} onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100">
-                {link.label}
-              </NavLink>
-            ))}
-          </nav>
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <Button to="/create-account" variant="secondary" className="py-2" onClick={() => setOpen(false)}>
-              Signup
-            </Button>
-            <Button to="/login-account" variant="dark" className="py-2" onClick={() => setOpen(false)}>
-              Login
-            </Button>
-          </div>
-        </div>
-      ) : null}
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{ duration: 0.22 }}
+            className="pointer-events-auto mx-auto mt-3 max-w-7xl rounded-[1.5rem] border border-blue-100 bg-white/92 px-4 py-4 shadow-[0_24px_70px_rgba(37,99,235,0.16)] backdrop-blur-2xl md:hidden"
+          >
+            <nav className="flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `rounded-full px-4 py-3 text-sm font-black transition ${
+                      isActive ? 'bg-blue-600 text-white' : 'text-slate-700 hover:bg-blue-50 hover:text-blue-700'
+                    }`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </nav>
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              <Button to="/create-account" variant="secondary" className="py-2" onClick={() => setOpen(false)}>
+                Signup
+              </Button>
+              <Button to="/login-account" className="bg-blue-950 py-2 text-white hover:bg-blue-800" onClick={() => setOpen(false)}>
+                Login
+              </Button>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   )
 }
