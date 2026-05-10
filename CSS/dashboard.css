@@ -1,0 +1,409 @@
+/* =========================================
+   GLOBAL RESET + BASE
+========================================= */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  overflow-x: hidden;
+  background: #f4f7fb;
+  color: #0f172a;
+}
+
+/* =========================================
+   SIDEBAR (PREMIUM CONSULTME STYLE)
+========================================= */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+  color: white;
+  padding-top: 1.2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1000;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  overflow-y: auto;
+}
+
+/* Sidebar Links */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 13px 18px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 14px;
+  margin: 6px 12px;
+  transition: 0.22s ease;
+}
+
+/* Hover Effect */
+.sidebar a:hover {
+  background: rgba(37, 99, 235, 0.18);
+  color: #ffffff;
+  transform: translateX(5px);
+}
+
+/* Active Link */
+.sidebar a.active {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.95), rgba(14, 165, 233, 0.90));
+  color: white;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+}
+
+/* =========================================
+   MOBILE TOGGLE BUTTON
+========================================= */
+.toggle-btn {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1100;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #0d6efd, #2563eb, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: 900;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+  transition: 0.2s ease;
+}
+
+.toggle-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   MAIN CONTENT (FIXED NO COLLISION)
+========================================= */
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px); /* ✅ FIXED */
+  padding: 2.2rem;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE FIX
+========================================= */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -260px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%; /* ✅ FIXED */
+    padding: 1.2rem;
+    padding-top: 4rem;
+  }
+
+  .toggle-btn {
+    display: block;
+  }
+}
+
+/* =========================================
+   PROJECTS AREA BASE
+========================================= */
+.projects-area {
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --muted: #64748b;
+  --border: rgba(15, 23, 42, 0.10);
+  --shadow: 0 18px 55px rgba(15, 23, 42, 0.10);
+}
+
+/* =========================================
+   CREATE PROJECT CARD
+========================================= */
+.create-card {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.10);
+  transition: transform .22s ease, box-shadow .22s ease;
+  min-width: 260px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.create-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14);
+}
+
+.create-card-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.create-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0d6efd 0%, #2563eb 50%, #0ea5e9 100%);
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 14px 35px rgba(37, 99, 235, 0.25);
+  transition: transform .22s ease;
+}
+
+.create-card:hover .create-icon {
+  transform: translateY(-3px) rotate(-4deg);
+}
+
+.create-title {
+  font-weight: 950;
+  font-size: 16px;
+  color: #0f172a;
+  margin: 0;
+}
+
+.create-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+/* =========================================
+   PROJECTS TABS
+========================================= */
+.projects-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tab-btn {
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 900;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  color: #0f172a;
+  transition: 0.2s ease;
+}
+
+.tab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.10);
+}
+
+.tab-btn.active {
+  background: linear-gradient(90deg, #0d6efd, #2563eb, #0ea5e9);
+  color: white;
+  border: none;
+  box-shadow: 0 18px 45px rgba(37, 99, 235, 0.25);
+}
+
+/* =========================================
+   PROJECTS GRID
+========================================= */
+#projectsContainer {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  align-items: start;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================
+   PROJECT CARD
+========================================= */
+.project-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.10);
+  overflow: hidden;
+  transition: 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.10), transparent 65%);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-card * {
+  position: relative;
+  z-index: 2;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.14);
+  border-color: rgba(37, 99, 235, 0.22);
+}
+
+.project-card .card-inner {
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1 1 auto;
+}
+
+/* Header */
+.project-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.project-card .card-title {
+  font-size: 1.08rem;
+  font-weight: 950;
+  margin: 0;
+  color: #0f172a;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+}
+
+/* Meta row */
+.project-meta-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.project-meta-row .poster {
+  font-weight: 950;
+  color: #0f172a;
+}
+
+/* Pills */
+.pills {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: #0f172a;
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* Description */
+.project-card .desc {
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+/* Footer */
+.project-card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.8rem 1.3rem 1.3rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+/* Days Badge */
+.badge-days {
+  background: linear-gradient(90deg, rgba(224, 242, 255, 0.9), rgba(216, 238, 254, 0.9));
+  color: #04516a;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 950;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+/* Icons */
+.icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Pagination */
+.projects-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Entrance animation */
+.projects-area > * {
+  animation: fadeUp 0.45s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Small screens */
+@media (max-width: 575px) {
+  .create-card {
+    min-width: 100%;
+  }
+
+  #projectsContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .project-card .desc {
+    font-size: 0.9rem;
+  }
+}

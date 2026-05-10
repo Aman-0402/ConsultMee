@@ -1,0 +1,1410 @@
+/* =========================
+   RESET & BASE
+   ========================= */
+* {
+  box-sizing: border-box;
+}
+
+/* =========================
+   GLOBAL CORPORATE BACKGROUND
+   ========================= */
+
+html, body {
+  min-height: 100%;
+  background: linear-gradient(
+    180deg,
+    #f4f5f7 0%,
+    #dfe3e8 100%
+  ) !important;
+}
+
+/* Let gradient show through all sections */
+.hero-section,
+.services-section,
+.solutions-section,
+.philosophy-section,
+.why-section,
+.footer-section {
+  background: transparent !important;
+}
+
+/* =========================
+   VARIABLES (SILVER + BLACK + BLUE THEME)
+   ========================= */
+:root {
+  --primary: #0b0f14;         /* Deep Black */
+  --secondary: #1d4ed8;       /* Corporate Blue */
+  --muted: #5b6775;           /* Steel Grey */
+  --text-dark: #0a0a0a;       /* Pure Black Text */
+  --border: rgba(0, 0, 0, 0.12);
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+/* =========================
+   NAVBAR (GLASS + ADAPTIVE)
+========================= */
+.navbar {
+  position: sticky;
+  top: 15px;
+  z-index: 9999;
+
+  width: 96%;
+  margin: 0 auto;
+
+  border-radius: 18px;
+
+  /* Glass base (works on light bg too) */
+  background: rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   SCROLLED STATE (MORE SOLID)
+========================= */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* =========================
+   LOGO
+========================= */
+.navbar-logo {
+  max-height: 55px;
+  width: auto;
+}
+
+/* =========================
+   NAV LINKS (BLUE SYSTEM)
+========================= */
+.navbar .nav-link {
+  color: #38bdf8; /* Sky Blue */
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.navbar .nav-link:hover {
+  color: #1d4ed8; /* Deep Blue */
+}
+
+/* Active */
+.navbar .nav-link.active {
+  color: #1d4ed8; /* Deep Blue */
+  font-weight: 600;
+}
+
+.navbar .nav-link {
+  position: relative;
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #1d4ed8;
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  width: 100%;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.navbar .btn {
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 8px 18px;
+  transition: all 0.25s ease;
+}
+
+/* Ghost */
+.navbar .btn-ghost {
+  color: var(--text-dark);
+}
+
+/* Primary Glass Button */
+.navbar .btn-primary {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-dark);
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.navbar .btn-primary:hover {
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-soft);
+}
+
+/* =========================
+   DESKTOP LAYOUT
+========================= */
+@media (min-width: 992px) {
+
+  .navbar-collapse {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-nav {
+    margin-left: 30px;
+    gap: 40px;
+  }
+}
+
+/* =========================
+   MOBILE NAVBAR
+========================= */
+@media (max-width: 991px) {
+
+  .navbar-logo {
+    max-height: 45px;
+  }
+
+  .navbar-collapse {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+
+    margin-top: 10px;
+    padding: 15px 10px;
+
+    border-radius: 14px;
+
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border);
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  .navbar .btn {
+    padding: 7px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+/* =========================
+   FALLBACK (NO BLUR SUPPORT)
+========================= */
+@supports not (backdrop-filter: blur(20px)) {
+  .navbar {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* =========================
+   HERO SECTION
+   ========================= */
+.hero-section {
+  min-height: 80vh;
+  background: transparent;
+  position: relative;
+  padding-inline: clamp(1rem, 4vw, 4rem);
+}
+
+/* =========================
+   HERO SECTION (FINAL)
+========================= */
+
+.hero-f500 {
+  background: transparent;
+  padding: 120px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* GRID */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 90px;
+  align-items: center;
+}
+
+/* TAG */
+.hero-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+/* TITLE */
+.hero-title {
+  font-size: 40px;
+  font-weight: 600;
+  color: blue;
+  line-height: 1.25;
+  margin-bottom: 22px;
+  letter-spacing: -0.4px;
+}
+
+.hero-title span {
+  color: var(--secondary);
+}
+
+/* DESCRIPTION */
+.hero-description {
+  font-size: 17px;
+  color: #4f5c69;
+  line-height: 1.75;
+  margin-bottom: 35px;
+  max-width: 600px;
+}
+
+/* CTA */
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  background: var(--secondary);
+  color: #ffffff;
+  padding: 13px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s ease;
+  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.18);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(29, 78, 216, 0.25);
+}
+
+.btn-secondary {
+  border: 1px solid #e5e5e5;
+  color: var(--text-dark);
+  padding: 13px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  background: #ffffff;
+  transition: 0.25s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+/* TRUST */
+.hero-trust {
+  margin-bottom: 35px;
+}
+
+.trust-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.trust-logos {
+  display: flex;
+  gap: 28px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+/* METRICS */
+.hero-metrics {
+  display: flex;
+  gap: 55px;
+}
+
+.hero-metrics strong {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.hero-metrics span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* RIGHT PANEL */
+.hero-panel {
+  display: flex;
+  justify-content: center;
+}
+
+.panel-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+}
+
+.panel-card:hover {
+  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* PANEL TITLE */
+.panel-card h4 {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* STEPS */
+.step {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.step span {
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.step p {
+  margin: 0;
+  color: #4f5c69;
+  font-size: 14px;
+}
+
+.step:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   MOBILE OPTIMIZATION
+========================= */
+@media (max-width: 900px) {
+
+  .hero-f500 {
+    padding: 70px 18px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .hero-title {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .hero-description {
+    font-size: 15.5px;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+  }
+
+  .trust-logos {
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .hero-metrics strong {
+    font-size: 18px;
+  }
+
+  .hero-metrics span {
+    font-size: 11px;
+  }
+
+  .panel-card {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .panel-card h4 {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .step {
+    padding: 10px 0;
+  }
+
+  .step p {
+    font-size: 13px;
+  }
+}
+
+/* SMALL DEVICES */
+@media (max-width: 480px) {
+
+  .hero-title {
+    font-size: 26px;
+  }
+
+  .hero-description {
+    font-size: 14.5px;
+  }
+
+  .hero-tag {
+    font-size: 10px;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   ANDROID / MOBILE CENTER ALIGN
+   ========================= */
+@media (max-width: 768px) {
+
+  .hero-left {
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .hero-content-card {
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .hero-title {
+    text-align: center;
+  }
+
+  .hero-title span {
+    width: 100%;
+  }
+
+  .hero-desc {
+    text-align: center;
+  }
+
+  .hero-left .d-flex {
+    justify-content: center;
+  }
+
+  .hero-left .btn {
+    white-space: nowrap;
+  }
+}
+
+/* =========================
+   LEFT CONTENT
+   ========================= */
+.hero-left {
+  background: transparent;
+  padding: clamp(2rem, 3.5vw, 4rem) !important;
+
+  padding-right: clamp(2.5rem, 6vw, 6.5rem) !important;
+
+  position: relative;
+  z-index: 5;
+}
+
+/* =========================
+   TEXT STYLES
+   ========================= */
+.hero-section h4 {
+  letter-spacing: 0.16em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+.hero-section h1 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.25;
+  color: var(--text-dark);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.hero-desc {
+  max-width: 100ch;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.hero-badge{
+    color: white;
+    background-color: blue;
+    padding: 10px;
+    border-radius: 10%;
+}
+
+/* =========================
+   ELITE CORPORATE ANIMATIONS
+========================= */
+
+/* Smooth fade + rise */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Soft fade */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slight scale (Apple style) */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   APPLY ANIMATIONS
+========================= */
+
+/* Staggered animation (professional feel) */
+.hero-tag {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.hero-title {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.hero-description {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-actions {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.hero-trust {
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero-metrics {
+  animation: fadeUp 1.1s ease forwards;
+}
+
+/* Panel appears slightly delayed */
+.panel-card {
+  animation: scaleIn 0.8s ease forwards;
+}
+
+/* =========================
+   MICRO INTERACTIONS
+========================= */
+
+/* Buttons (premium feel) */
+.btn-primary,
+.btn-secondary {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Card hover (consulting feel) */
+.panel-card {
+  transition: all 0.3s ease;
+}
+
+.panel-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Steps subtle motion */
+.step {
+  transition: all 0.25s ease;
+}
+
+.step:hover {
+  transform: translateX(4px);
+}
+
+/* =========================
+   PERFORMANCE OPTIMIZATION
+========================= */
+
+/* Prevent jank */
+.hero-tag,
+.hero-title,
+.hero-description,
+.hero-actions,
+.hero-trust,
+.hero-metrics,
+.panel-card {
+  will-change: transform, opacity;
+}
+
+/* Reduce animation for low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================
+   PREMIUM SOLUTION CARDS
+   ========================= */
+
+.solution-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.solution-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(29, 78, 216, 0.30);
+}
+
+.solution-icon {
+  font-size: 2.2rem;
+  color: var(--secondary);
+}
+
+/* =========================
+   3D MODEL COLUMN
+   ========================= */
+.hero-image-wrap {
+  position: relative;
+  z-index: 1;
+
+  padding-left: clamp(2.5rem, 6vw, 6.5rem);
+  padding-right: clamp(1rem, 3vw, 3rem);
+
+  overflow: hidden;
+  background: transparent !important;
+}
+
+#hero3d {
+  width: 100%;
+  height: 100%;
+  min-height: 80vh;
+  display: block;
+  background: transparent;
+}
+
+/* =========================
+   MOBILE FIXES
+   ========================= */
+@media (max-width: 767px) {
+  .hero-section {
+    padding-inline: 1rem;
+  }
+
+  .hero-left {
+    padding-right: 1rem !important;
+    text-align: center;
+    align-items: center !important;
+  }
+
+  .hero-image-wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #hero3d {
+    min-height: 50vh;
+  }
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn-primary,
+.hero-cta {
+  border-radius: 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: none;
+}
+
+/* Corporate button replacement for orange */
+.btn-orange {
+  background: linear-gradient(90deg, #0b0f14, #1d4ed8);
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 25px;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(29, 78, 216, 0.22);
+}
+
+.btn-register {
+  background: linear-gradient(90deg, #0b0f14, #1d4ed8);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(29, 78, 216, 0.22);
+}
+
+.btn-contact {
+  background: none;
+  color: var(--secondary);
+  border: none;
+  padding: 10px 0;
+  font-weight: 700;
+}
+
+.btn-contact:hover {
+  color: var(--primary);
+}
+
+/* =========================
+   SERVICES
+   ========================= */
+.services-section h6 {
+  letter-spacing: 0.22em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+.services-section h2 {
+  font-size: clamp(1.8rem, 2.3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.service-card {
+  border-radius: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+/* ================================
+   SOLUTIONS SECTION CENTER ALIGN
+================================ */
+.solutions-section {
+  text-align: center;
+}
+
+/* HEADER CENTER */
+.solutions-section .row.mb-5 {
+  justify-content: center;
+}
+
+.solutions-section .row.mb-5 .col-lg-8 {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* CARD DESIGN + CENTER CONTENT */
+.solution-card {
+  background: #ffffff;
+  padding: 30px 20px;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: 0.3s ease-in-out;
+}
+
+.solution-icon {
+  width: 80px;
+  height: 80px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 40px;
+}
+
+.metrics-section h2 {
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+}
+
+.metrics-section p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Remove non-corporate pink tone */
+.text-pink {
+  color: var(--secondary);
+}
+
+/* =========================
+   ACCORDION
+   ========================= */
+.accordion-button {
+  font-size: 1rem;
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.accordion-button:not(.collapsed) {
+  background: rgba(29, 78, 216, 0.08);
+  color: var(--secondary);
+}
+
+.accordion-body {
+  font-size: 0.95rem;
+  color: #4f5c69;
+  line-height: 1.7;
+}
+
+.accordion-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================
+   PHILOSOPHY
+   ========================= */
+.philosophy-section {
+  background: transparent;
+}
+
+.philosophy-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.philosophy-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* =========================
+   CTA
+   ========================= */
+
+/* Content surfaces stay white */
+.card,
+.accordion-item {
+  background-color: #ffffff;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(90deg, #0b0f14, #1d4ed8);
+  color: #ffffff;
+
+  padding: 24px 20px;
+  border-radius: 18px;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Desktop spacing */
+@media (min-width: 768px) {
+  .cta-section {
+    padding: 38px 38px;
+    border-radius: 22px;
+
+    max-width: 1100px;
+    margin: 32px auto;
+  }
+}
+
+/* Typography */
+.cta-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.cta-text {
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 650px;
+  line-height: 1.7;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer-section {
+  padding: 50px 0;
+  background: linear-gradient(
+    180deg,
+    #e5e7eb 0%,
+    #cbd5e1 100%
+  );
+  font-size: 0.92rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.footer-section a {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
+:focus-visible {
+  outline: 3px solid rgba(29, 78, 216, 0.30);
+  outline-offset: 3px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 767px) {
+  .hero-left {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+/* =========================
+   GLOBAL TRANSITIONS
+   ========================= */
+a, button, .card, img {
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   NAVBAR HOVER EFFECT
+   ========================= */
+.navbar .nav-link {
+  position: relative;
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--secondary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 99px;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  width: 60%;
+}
+
+/* =========================
+   HERO ANIMATION
+   ========================= */
+.hero-left h4,
+.hero-left h1,
+.hero-desc,
+.hero-cta {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.hero-left h1 { animation-delay: 0.15s; }
+.hero-desc { animation-delay: 0.3s; }
+.hero-cta { animation-delay: 0.45s; }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   SERVICE CARD HOVER
+   ========================= */
+.service-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(29, 78, 216, 0.25);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+}
+
+/* =========================
+   PHILOSOPHY – FINAL GRID-CORRECT DESIGN
+   ========================= */
+
+/* Section spacing */
+.philosophy-section {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+
+/* Header typography */
+.philosophy-section h6 {
+  font-size: 0.75rem;
+  letter-spacing: 0.34em;
+  font-weight: 800;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+.philosophy-section h2 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* =========================
+   CRITICAL FIX
+   RECTANGLE = SAME WIDTH AS 3 CARDS
+   ========================= */
+
+/* Override Bootstrap col-lg-10 ONLY inside philosophy */
+.philosophy-section .row > .col-lg-10 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* =========================
+   CORE PHILOSOPHY (RECTANGLE CARD)
+   ========================= */
+.philosophy-core {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  gap: 16px;
+  padding: 36px 40px;
+
+  width: 100%;
+  background: rgba(255, 255, 255, 0.96);
+  border-left: 6px solid var(--secondary);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Core icon */
+.philosophy-core-icon {
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--secondary);
+}
+
+/* Core text */
+.philosophy-core p {
+  max-width: 760px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* =========================
+   PHILOSOPHY CARDS (3 SQUARE CARDS)
+   ========================= */
+.philosophy-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  height: 100%;
+  padding: 36px 32px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Hover polish */
+.philosophy-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(29, 78, 216, 0.25);
+}
+
+/* Top-center icons */
+.philosophy-icon {
+  width: 64px;
+  height: 64px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--secondary);
+
+  border-radius: 50%;
+  background: rgba(29, 78, 216, 0.10);
+  margin-bottom: 14px;
+}
+
+/* Card heading */
+.philosophy-card h5 {
+  margin-top: 6px;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* Card text */
+.philosophy-card p {
+  line-height: 1.7;
+  max-width: 90%;
+  color: var(--muted);
+}
+
+/* =========================
+   SIGNATURE
+   ========================= */
+.philosophy-section .row.mt-5 {
+  margin-top: 4rem !important;
+}
+
+.philosophy-section .text-secondary {
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+/* =========================
+   RESPONSIVE REFINEMENTS
+   ========================= */
+@media (max-width: 768px) {
+  .philosophy-core {
+    padding: 28px 24px;
+  }
+
+  .philosophy-core-icon {
+    font-size: 2.6rem;
+  }
+
+  .philosophy-card {
+    padding: 32px 24px;
+  }
+
+  .philosophy-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 2.8rem;
+  }
+
+  .philosophy-card p {
+    max-width: 100%;
+  }
+}
+
+/* =========================
+   BUTTON HOVER EFFECTS
+   ========================= */
+.btn-primary,
+.btn-register,
+.btn-orange {
+  box-shadow: 0 10px 20px rgba(29, 78, 216, 0.22);
+}
+
+.btn-primary:hover,
+.btn-register:hover,
+.btn-orange:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 35px rgba(29, 78, 216, 0.35);
+}
+
+.btn-contact:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   ACCORDION POLISH
+   ========================= */
+.accordion-item:hover {
+  border-color: rgba(29, 78, 216, 0.40);
+}
+
+/* =========================
+   IMAGE HOVER EFFECT
+   ========================= */
+.hero-image,
+.philosophy-image {
+  transition: transform 0.6s ease;
+}
+
+.hero-image:hover,
+.philosophy-image:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   FOOTER ICON HOVER
+   ========================= */
+.footer-section i {
+  font-size: 1.2rem;
+}
+
+.footer-section i:hover {
+  color: var(--secondary);
+  transform: translateY(-3px);
+}
+
+/* =========================
+   RESPONSIVE IMPROVEMENTS
+   ========================= */
+@media (max-width: 991px) {
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-left {
+    text-align: center;
+    align-items: center !important;
+  }
+
+  .hero-desc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section h1 {
+    font-size: 1.9rem;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+}
+
+/* =========================
+   SCROLL POP-UP ANIMATION
+   ========================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.delay-1 { transition-delay: 0.15s; }
+.reveal.delay-2 { transition-delay: 0.3s; }
+.reveal.delay-3 { transition-delay: 0.45s; }
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+

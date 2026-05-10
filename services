@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConsultME | Our Services</title>
+
+    <!-- Meta & SEO -->
+    <meta name="description" content="Explore ConsultME's range of consultancy, mentorship, and advisory services across Business, Legal, Finance, AI, Media, and Healthcare domains." />
+    <meta name="keywords" content="consultancy services, business consultancy, legal consultancy, finance advisory, AI consultants, healthcare consulting, mentorship platform, advisory services India" />
+    <meta name="author" content="ConsultME Team" />
+
+    <!-- Styles -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/logox.ico">
+    <link rel="icon" href="/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./CSS/main.css"/>
+  </head>
+
+  <body>
+    <!-- Navigation bar start -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+    
+        <!-- Logo -->
+        <a class="navbar-brand" href="https://consultmee.in">
+          <img src="./assets/img/logo.png" alt="Logo" class="navbar-logo">
+        </a>
+    
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Collapsible Content -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    
+          <!-- Nav links (right after logo) -->
+          <div class="navbar-nav text-center">
+            <a class="nav-link" href="https://consultmee.in">Home</a>
+            <a class="nav-link active" aria-current="page" href="./services">Services</a>
+            <a class="nav-link" href="./about">About us</a>
+            <a class="nav-link" href="./contact">Contact us</a>
+          </div>
+    
+          <!-- Auth Buttons (right aligned) -->
+          <div class="d-flex gap-2 justify-content-center ms-lg-auto mt-lg-0 mt-3">
+            <a href="create-account" class="btn btn-outline-primary">Signup</a>
+            <a href="login-account" class="btn btn-outline-dark">Login</a>
+          </div>
+    
+        </div>
+      </div>
+    </nav>
+    <!-- Navigation bar end --><br><br>
+
+    
+    
+<!-- In-House Consulting Services -->
+    <section class="container py-5 services-section">
+      <h6 class="text-uppercase text-primary text-center">In-House Services</h6>
+      <h2 class="fw-bold text-center mb-5">Expert Consulting Delivered Directly By Our Team</h2>
+    
+      <div class="row g-4">
+    
+        <!-- Startup Consultation -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-lightbulb fs-1 text-primary"></i>
+              </div>
+              <h5 class="fw-bold">Startup Consultation</h5>
+              <p class="text-muted">
+                Validate ideas, design business models, and launch startups with expert strategic guidance.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- AI Consultation -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-cpu fs-1 text-success"></i>
+              </div>
+              <h5 class="fw-bold">AI Consultation</h5>
+              <p class="text-muted">
+                Implement AI-driven automation, optimize workflows, and enhance business efficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Business Consultation -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-briefcase fs-1 text-warning"></i>
+              </div>
+              <h5 class="fw-bold">Business Consultation</h5>
+              <p class="text-muted">
+                Improve operations, scale growth strategies, and maximize profitability with expert insights.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Training Consultation -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-mortarboard fs-1 text-danger"></i>
+              </div>
+              <h5 class="fw-bold">Training Consultation</h5>
+              <p class="text-muted">
+                Design structured training programs, institutional frameworks, and learning systems effectively.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Product Consultation -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-box-seam fs-1 text-info"></i>
+              </div>
+              <h5 class="fw-bold">Product Consultation</h5>
+              <p class="text-muted">
+                Plan, develop, and scale digital products with expert product strategy and roadmap guidance.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- HR Consultation -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-people fs-1 text-secondary"></i>
+              </div>
+              <h5 class="fw-bold">HR Consultation</h5>
+              <p class="text-muted">
+                Build hiring systems, HR policies, and talent pipelines for sustainable workforce growth.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    
+      <!-- CTA -->
+      <div class="text-center mt-5">
+        <a href="./contact" class="btn btn-lg btn-primary px-4">
+          Request Consultation
+        </a>
+      </div>
+    </section>
+
+<!-- Our Services -->
+    <section class="container py-5 services-section">
+      <h6 class="text-uppercase text-primary text-center">Our Services</h6>
+      <h2 class="fw-bold text-center mb-5">Smart Solutions To Connect Clients/Vendors & Consultants</h2>
+    
+      <div class="row g-4">
+    
+        <!-- Appointment Booking -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-calendar-check fs-1 text-primary"></i>
+              </div>
+              <h5 class="fw-bold">Appointment Booking</h5>
+              <p class="text-muted">
+                Schedule meetings with verified consultants seamlessly through our easy appointment system.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Project / Task Posting -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-kanban fs-1 text-success"></i>
+              </div>
+              <h5 class="fw-bold">Project / Task Posting</h5>
+              <p class="text-muted">
+                Post your project requirements and receive proposals from expert consultants instantly.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Consultant Suggestions -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-person-lines-fill fs-1 text-warning"></i>
+              </div>
+              <h5 class="fw-bold">Consultant Suggestions</h5>
+              <p class="text-muted">
+                Get AI-driven recommendations to match you with the most suitable industry experts.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Affordable Pricings -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-currency-rupee fs-1 text-danger"></i>
+              </div>
+              <h5 class="fw-bold">Affordable Pricing</h5>
+              <p class="text-muted">
+                Transparent and budget-friendly pricing models suitable for startups, MSMEs, and enterprises.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- One Click Booking -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-lightning-charge fs-1 text-info"></i>
+              </div>
+              <h5 class="fw-bold">One-Click Booking</h5>
+              <p class="text-muted">
+                Confirm and book your consultant instantly with a fast and hassle-free one-click process.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Multi Industry Expertise -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card-body text-center">
+              <div class="service-icon mb-3">
+                <i class="bi bi-globe2 fs-1 text-secondary"></i>
+              </div>
+              <h5 class="fw-bold">Multi Industry Expertise</h5>
+              <p class="text-muted">
+                Access professionals across technology, legal, finance, healthcare, media, and more.
+              </p>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    
+      <div class="text-center mt-5">
+        <a href="./create-account" class="btn btn-lg btn-primary px-4">
+          Explore All Services
+        </a>
+      </div>
+    </section>
+    
+
+    <!-- CTA Section -->
+    <section class="cta-section text-center py-5">
+      <div class="container">
+        <h3 class="fw-bold mb-3 animate">Need Expert Guidance?</h3>
+        <p class="text-white mb-4 animate">Join thousands of clients who trust ConsultME to connect with the right consultants across industries.</p>
+        <a href="signup.php" class="btn btn-primary px-4 me-2">Register</a>
+        <a href="contact" class="btn btn-primary px-4 me-2">Contact Us</a>
+      </div>
+    </section>
+
+  <!-- Footer -->
+  <footer style="padding: 40px 0; color: black; background-color:lavender;" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <img src="./assets/img/logo.png" alt="ConsultMe Logo" style="height: 70px;">
+          <p class="mt-3" style="font-size: 14px;">
+            ConsultMe: Your partner in smart, AI-powered business consulting. Accelerate your growth with innovation-driven solutions.
+          </p>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 style="color: #1dd186;">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="./about" class="text-decoration-none">About Us</a></li>
+            <li><a href="./contact" class="text-decoration-none">Contact Us</a></li>
+            <li><a href="./services" class="text-decoration-none">Our Services</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 style="color: #1dd186;">Get Involved</h5>
+          <ul class="list-unstyled">
+            <li><a href="csignup.php" class="text-decoration-none">Become a Freelancer</a></li>
+            <li><a href="clogin.php" class="text-decoration-none">Freelancer Login</a></li>
+            <li><a href="contact" class="text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 style="color: #1dd186;">Contact Us</h5>
+          <ul class="list-unstyled">
+            <li>
+                <address>
+                    <i class="bi bi-geo-alt-fill text-success me-2"></i> 2066 2nd Floor, Nazarbaug Palace 
+                    Mandvi, Near Mandvi Gate, Vadodara
+                    Gujarat, India 390001
+                </address>
+            </li>
+            <li><i class="bi bi-telephone-fill text-success me-2"></i> +91 8317818107</li>
+            <li><i class="bi bi-envelope-fill text-success me-2"></i> info@consultmee.in</li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="text-center">
+        <small>&copy; <span style="color: #1dd186;">ConsultME</span>, All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+  <!--Footer End-->
+
+    <!--Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".animate");
+        const isMobile = window.innerWidth < 768;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("visible");
+            });
+          },
+          { threshold: isMobile ? 0.05 : 0.15 }
+        );
+
+        elements.forEach((el) => observer.observe(el));
+      });
+    </script>
+    <!--Scroll Pop Up Logic-->
+    <script>
+      const revealElements = document.querySelectorAll(
+        '.hero-left h4, .hero-left h1, .hero-desc, .hero-cta, ' +
+        '.service-card, .card, .accordion-item, ' +
+        '.philosophy-section *, .why-section *, .cta-section, .footer-section *'
+      );
+    
+      revealElements.forEach(el => el.classList.add('reveal'));
+    
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+            } else {
+              entry.target.classList.remove('show'); // enables reverse on scroll up
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: '0px 0px -60px 0px'
+        }
+      );
+    
+      revealElements.forEach(el => observer.observe(el));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
