@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import {
   FaCalendarCheck,
   FaClockRotateLeft,
@@ -9,6 +10,7 @@ import {
   FaUserTie,
 } from 'react-icons/fa6'
 import logoBw from '../assets/brand/logo-bw.png'
+import ScrollToTop from '../components/utils/ScrollToTop'
 
 const sidebarLinks = [
   { label: 'Overview', to: '/dashboard', icon: FaTableColumns },
@@ -20,8 +22,11 @@ const sidebarLinks = [
 ]
 
 function DashboardLayout() {
+  const location = useLocation()
+
   return (
     <div className="min-h-screen bg-slate-100 text-slate-950 lg:grid lg:grid-cols-[280px_1fr]">
+      <ScrollToTop />
       <aside className="sticky top-0 z-30 hidden h-screen overflow-y-auto border-r border-white/10 bg-slate-950 px-4 py-5 text-white lg:block">
         <NavLink to="/" className="mb-8 block rounded-lg bg-white p-3">
           <img src={logoBw} alt="ConsultME" className="h-14 w-auto object-contain" />
@@ -63,9 +68,15 @@ function DashboardLayout() {
             </NavLink>
           </div>
         </header>
-        <main className="mx-auto max-w-7xl px-4 py-6 lg:px-8">
+        <motion.main
+          key={location.pathname + location.search}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto max-w-7xl px-4 py-6 lg:px-8"
+        >
           <Outlet />
-        </main>
+        </motion.main>
       </div>
     </div>
   )
