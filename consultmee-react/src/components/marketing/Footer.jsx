@@ -15,7 +15,7 @@ const footerGroups = [
   {
     title: 'Get Involved',
     links: [
-      { label: 'Become a Freelancer', to: '/signup/consultant' },
+      { label: 'Become a Freelancer', to: '/create-account' },
       { label: 'Freelancer Login', to: '/login/consultant' },
       { label: 'Contact', to: '/contact' },
     ],
