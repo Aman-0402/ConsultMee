@@ -8,7 +8,7 @@
   .star-filled { color: #f59e0b; } .star-empty { color: rgba(255,255,255,0.2); }
 </style>
 
-<main class="max-w-5xl mx-auto px-4 pt-28 pb-16">
+<div class="max-w-5xl mx-auto px-4 pt-28 pb-16">
 
   <!-- PROFILE CARD -->
   <div class="glass-card p-8 mb-8 shadow-2xl">
@@ -121,4 +121,4 @@
     <?php endif; ?>
   </div>
 
-</main>
+</div>
