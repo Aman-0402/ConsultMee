@@ -1,0 +1,9 @@
+.env
+vendor/
+storage/sessions/
+storage/logs/*.log
+storage/cache/
+storage/temp/
+node_modules/
+*.DS_Store
+Thumbs.db

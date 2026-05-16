@@ -1,0 +1,112 @@
+<main class="flex-1 flex items-center justify-center px-4 pt-24 pb-16">
+  <div class="w-full max-w-md">
+    <div class="text-center mb-8">
+      <img src="/assets/img/logo.png" alt="ConsultMee" class="h-12 w-auto mx-auto mb-5">
+      <h1 class="text-2xl font-black mb-1">Forgot Password</h1>
+      <p class="text-white/50 text-sm">Enter your email to receive a reset OTP</p>
+    </div>
+
+    <div class="glass-card bg-white/8 backdrop-blur-xl border border-white/15 rounded-3xl p-8 shadow-2xl">
+      <div id="messageBox" class="mb-4 text-center text-sm font-semibold hidden rounded-xl px-4 py-3"></div>
+
+      <form id="sendOtpForm" class="flex flex-col gap-4">
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-white/80">Email Address</label>
+          <div class="relative">
+            <i class="bi bi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
+            <input type="email" id="email" name="email" class="form-input pl-11" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30 mt-1">
+          Send OTP <i class="bi bi-arrow-right ml-1"></i>
+        </button>
+      </form>
+
+      <form id="verifyOtpForm" class="hidden flex flex-col gap-4">
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-white/80">OTP Code</label>
+          <div class="relative">
+            <i class="bi bi-shield-lock absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
+            <input type="text" id="otp" name="otp" class="form-input pl-11" placeholder="6-digit OTP" maxlength="6" required>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-white/80">New Password</label>
+          <div class="relative">
+            <i class="bi bi-lock absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
+            <input type="password" id="new_password" name="new_password" class="form-input pl-11" placeholder="Create new password" required>
+          </div>
+        </div>
+        <input type="hidden" id="verify_email" name="email">
+        <button type="submit" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30 mt-1">
+          Reset Password <i class="bi bi-check-circle ml-1"></i>
+        </button>
+      </form>
+
+      <p class="text-center text-white/50 text-sm mt-5">
+        Remembered? <a href="/login" class="text-accent hover:text-white font-medium transition-colors">Login</a>
+      </p>
+    </div>
+  </div>
+</main>
+
+<script>
+  const sendOtpForm = document.getElementById('sendOtpForm');
+  const verifyOtpForm = document.getElementById('verifyOtpForm');
+  const messageBox = document.getElementById('messageBox');
+
+  function showMsg(text, type) {
+    messageBox.classList.remove('hidden');
+    messageBox.textContent = text;
+    if (type === 'error') {
+      messageBox.style.color = '#f87171';
+      messageBox.style.background = 'rgba(239,68,68,0.1)';
+      messageBox.style.border = '1px solid rgba(239,68,68,0.3)';
+    } else if (type === 'success') {
+      messageBox.style.color = '#34d399';
+      messageBox.style.background = 'rgba(52,211,153,0.1)';
+      messageBox.style.border = '1px solid rgba(52,211,153,0.3)';
+    } else {
+      messageBox.style.color = '#93c5fd';
+      messageBox.style.background = 'rgba(37,99,235,0.1)';
+      messageBox.style.border = '1px solid rgba(37,99,235,0.25)';
+    }
+  }
+
+  sendOtpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    showMsg('Sending OTP...', 'info');
+    const formData = new FormData();
+    formData.append('email', document.getElementById('email').value);
+    const res = await fetch('/api/auth/send-otp', { method: 'POST', body: formData });
+    let data;
+    try { data = await res.json(); } catch { showMsg('Unexpected response.', 'error'); return; }
+    if (data.success) {
+      showMsg(data.success, 'success');
+      document.getElementById('verify_email').value = document.getElementById('email').value;
+      sendOtpForm.classList.add('hidden');
+      verifyOtpForm.classList.remove('hidden');
+    } else {
+      showMsg(data.error || 'Failed to send OTP.', 'error');
+    }
+  });
+
+  verifyOtpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    showMsg('Verifying OTP...', 'info');
+    const formData = new FormData();
+    formData.append('email', document.getElementById('verify_email').value);
+    formData.append('otp', document.getElementById('otp').value);
+    formData.append('new_password', document.getElementById('new_password').value);
+    const res = await fetch('/api/auth/verify-otp', { method: 'POST', body: formData });
+    let data;
+    try { data = await res.json(); } catch { showMsg('Unexpected server response.', 'error'); return; }
+    if (data.success) {
+      showMsg(data.success + ' Redirecting to login...', 'success');
+      verifyOtpForm.querySelectorAll('input, button').forEach(el => el.disabled = true);
+      setTimeout(() => { window.location.href = '/login'; }, 2000);
+    } else {
+      showMsg(data.error || 'OTP verification failed.', 'error');
+    }
+  });
+</script>
