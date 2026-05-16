@@ -11,7 +11,7 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: { cobalt: '#2563eb', accent: '#0ea5e9' },
+          colors: { cobalt: '#1c4d8d', accent: '#4988c4', navy: '#0f2854', pale: '#bde8f5' },
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
         }
       }

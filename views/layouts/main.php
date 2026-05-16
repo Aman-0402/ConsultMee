@@ -11,14 +11,15 @@
       theme: {
         extend: {
           colors: {
-            cobalt: '#2563eb',
-            accent: '#0ea5e9',
-            navy: '#0f172a',
+            cobalt:  '#1c4d8d',
+            accent:  '#4988c4',
+            navy:    '#0f2854',
+            pale:    '#bde8f5',
           },
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           boxShadow: {
             card: '0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06)',
-            'card-hover': '0 4px 12px rgba(0,0,0,0.1), 0 16px 40px rgba(37,99,235,0.12)',
+            'card-hover': '0 4px 12px rgba(0,0,0,0.1), 0 16px 40px rgba(28,77,141,0.14)',
           }
         }
       }
@@ -32,9 +33,9 @@
     body { background: #f8fafc; color: #0f172a; }
     .section-white { background: #ffffff; }
     .section-gray  { background: #f1f5f9; }
-    .section-blue  { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #0ea5e9 100%); }
+    .section-blue  { background: linear-gradient(135deg, #0f2854 0%, #1c4d8d 60%, #4988c4 100%); }
     .pro-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 8px 24px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.2s; }
-    .pro-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1), 0 16px 40px rgba(37,99,235,0.10); transform: translateY(-3px); }
+    .pro-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1), 0 16px 40px rgba(28,77,141,0.12); transform: translateY(-3px); }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
