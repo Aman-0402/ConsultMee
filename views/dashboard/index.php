@@ -4,53 +4,50 @@ $industries = ["Agriculture","Artificial Intelligence","Astronomy","Automobiles 
 ?>
 <style>
   * { font-family: 'Inter', system-ui, sans-serif; box-sizing: border-box; }
-  body { background: #0a0f1e; color: white; margin: 0; display: flex; min-height: 100vh; }
-  .sidebar { position: fixed; top: 0; left: 0; height: 100vh; width: 240px; z-index: 100; background: rgba(13,21,48,0.95); backdrop-filter: blur(20px); border-right: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; padding: 20px 16px; transition: transform 0.3s ease; }
+  body { background: #f1f5f9; color: #0f172a; margin: 0; display: flex; min-height: 100vh; }
+  .sidebar { position: fixed; top: 0; left: 0; height: 100vh; width: 240px; z-index: 100; background: #ffffff; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; padding: 20px 16px; transition: transform 0.3s ease; box-shadow: 2px 0 8px rgba(0,0,0,0.04); }
   .sidebar ul { list-style: none; padding: 0; margin: 0; flex: 1; }
-  .sidebar ul a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; margin-bottom: 4px; }
-  .sidebar ul a:hover { background: rgba(255,255,255,0.08); color: white; }
-  .sidebar ul a.active { background: rgba(37,99,235,0.25); color: white; border: 1px solid rgba(37,99,235,0.4); }
+  .sidebar ul a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; color: #475569; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: all 0.15s; margin-bottom: 4px; }
+  .sidebar ul a:hover { background: #eff6ff; color: #2563eb; }
+  .sidebar ul a.active { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
   .sidebar-logo { display: block; margin-bottom: 24px; padding: 0 4px; }
-  .sidebar-logo img { height: 40px; width: auto; filter: brightness(1.1); }
-  .main-content { margin-left: 240px; flex: 1; padding: 28px; min-height: 100vh; background: #0a0f1e; }
-  #page-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(90deg, #2563eb, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .toggle-btn { display: none; position: fixed; top: 12px; left: 12px; z-index: 200; background: rgba(37,99,235,0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 14px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
-  .glass-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); border-radius: 20px; padding: 24px; position: relative; overflow: hidden; }
-  .glass-card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(ellipse at 30% 0%, rgba(37,99,235,0.12), transparent 70%); pointer-events: none; }
+  .sidebar-logo img { height: 40px; width: auto; }
+  .main-content { margin-left: 240px; flex: 1; padding: 28px; min-height: 100vh; background: #f1f5f9; }
+  #page-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; color: #0f172a; }
+  .toggle-btn { display: none; position: fixed; top: 12px; left: 12px; z-index: 200; background: #2563eb; border: none; color: white; padding: 8px 14px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+  .glass-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
   #consultant-list, #categories, #appointments, #history, #projectsContainer { display: grid; gap: 16px; }
   #consultant-list { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
   #categories { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
   .projects-tabs { display: flex; gap: 8px; }
-  .tab-btn { padding: 8px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.2s; }
-  .tab-btn.active, .tab-btn:hover { background: rgba(37,99,235,0.3); border-color: rgba(37,99,235,0.5); color: white; }
-  .create-card { background: rgba(37,99,235,0.12); border: 1.5px dashed rgba(37,99,235,0.4); border-radius: 16px; padding: 16px 20px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; }
-  .create-card:hover { background: rgba(37,99,235,0.2); transform: translateY(-2px); }
+  .tab-btn { padding: 8px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; border: 1px solid #e2e8f0; background: #ffffff; color: #64748b; cursor: pointer; transition: all 0.2s; }
+  .tab-btn.active, .tab-btn:hover { background: #eff6ff; border-color: #bfdbfe; color: #2563eb; }
+  .create-card { background: #eff6ff; border: 1.5px dashed #93c5fd; border-radius: 16px; padding: 16px 20px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; }
+  .create-card:hover { background: #dbeafe; transform: translateY(-2px); }
   .create-card-inner { display: flex; align-items: center; gap: 14px; }
-  .create-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(37,99,235,0.3); display: flex; align-items: center; justify-content: center; color: #0ea5e9; font-size: 1.1rem; }
-  .create-title { font-weight: 700; font-size: 0.9rem; color: white; }
-  .create-sub { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
-  #profile .profile-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 32px; }
-  #user-profile-img { width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 3px solid rgba(37,99,235,0.5); }
-  .dash-input, .dash-select, .dash-textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; color: white; padding: 10px 13px; width: 100%; outline: none; transition: border-color 0.2s; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
-  .dash-input:focus, .dash-select:focus, .dash-textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.18); }
-  .dash-input::placeholder, .dash-textarea::placeholder { color: rgba(255,255,255,0.3); }
-  .dash-select option { background: #0d1a3a; color: white; }
+  .create-icon { width: 40px; height: 40px; border-radius: 10px; background: #dbeafe; display: flex; align-items: center; justify-content: center; color: #2563eb; font-size: 1.1rem; }
+  .create-title { font-weight: 700; font-size: 0.9rem; color: #1e40af; }
+  .create-sub { font-size: 0.75rem; color: #64748b; }
+  #profile .profile-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  #user-profile-img { width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 3px solid #bfdbfe; }
+  .dash-input, .dash-select, .dash-textarea { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; color: #0f172a; padding: 10px 13px; width: 100%; outline: none; transition: border-color 0.2s; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
+  .dash-input:focus, .dash-select:focus, .dash-textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); background: #fff; }
+  .dash-input::placeholder, .dash-textarea::placeholder { color: #94a3b8; }
   .dash-textarea { resize: vertical; }
-  .dash-label { display: block; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.65); margin-bottom: 5px; }
-  .modal-content { background: #0d1530 !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 20px !important; color: white !important; }
-  .modal-header { border-bottom: 1px solid rgba(255,255,255,0.08) !important; }
-  .modal-footer { border-top: 1px solid rgba(255,255,255,0.08) !important; }
-  .modal-title { font-weight: 700 !important; }
-  .btn-close { filter: invert(1); }
-  .logout-btn { margin-top: auto; display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #f87171; text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: all 0.2s; cursor: pointer; }
-  .logout-btn:hover { background: rgba(239,68,68,0.25); color: #fca5a5; }
+  .dash-label { display: block; font-size: 0.82rem; font-weight: 600; color: #475569; margin-bottom: 5px; }
+  .modal-content { background: #ffffff !important; border: 1px solid #e2e8f0 !important; border-radius: 16px !important; color: #0f172a !important; }
+  .modal-header { border-bottom: 1px solid #f1f5f9 !important; }
+  .modal-footer { border-top: 1px solid #f1f5f9 !important; }
+  .modal-title { font-weight: 700 !important; color: #0f172a !important; }
+  .logout-btn { margin-top: auto; display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: all 0.2s; cursor: pointer; }
+  .logout-btn:hover { background: #fee2e2; color: #b91c1c; }
   @media (max-width: 768px) { .toggle-btn { display: block; } .sidebar { transform: translateX(-100%); } .sidebar.active { transform: translateX(0); } .main-content { margin-left: 0; padding: 70px 16px 24px; } }
 </style>
 
 <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
 
 <div class="sidebar">
-  <a href="/" class="sidebar-logo"><img src="/assets/img/logo_bw.png" alt="ConsultME Logo"></a>
+  <a href="/" class="sidebar-logo"><img src="/assets/img/logo.png" alt="ConsultMee Logo"></a>
   <ul>
     <li><a href="#consultants" onclick="showSection('consultants')" class="active"><i class="fa fa-user-tie"></i> Consultants</a></li>
     <li><a href="#categories" onclick="showSection('categories')"><i class="fa fa-list"></i> Categories</a></li>
@@ -105,16 +102,16 @@ $industries = ["Agriculture","Artificial Intelligence","Astronomy","Automobiles 
           <h3 id="user-name" style="font-size:1.4rem; font-weight:800; margin-bottom:8px;">
             <?= \ConsultMee\Core\View::escape($user['full_name'] ?? '') ?>
           </h3>
-          <p style="color:rgba(255,255,255,0.5); margin-bottom:6px; font-size:0.9rem;">
-            <i class="fa fa-map-marker-alt" style="color:#0ea5e9; margin-right:6px;"></i>
+          <p style="color:#64748b; margin-bottom:6px; font-size:0.9rem;">
+            <i class="fa fa-map-marker-alt" style="color:#2563eb; margin-right:6px;"></i>
             <span id="user-state"><?= \ConsultMee\Core\View::escape($user['state'] ?? '') ?></span>
           </p>
-          <p style="margin-bottom:4px; font-size:0.9rem;"><span style="color:rgba(255,255,255,0.45);">Username:</span> <span id="user-username"><?= \ConsultMee\Core\View::escape($user['username'] ?? '') ?></span></p>
-          <p style="margin-bottom:4px; font-size:0.9rem;"><span style="color:rgba(255,255,255,0.45);">Identity:</span> <span id="user-identity"><?= \ConsultMee\Core\View::escape($user['identity'] ?? '') ?></span></p>
-          <p style="margin-bottom:4px; font-size:0.9rem;"><span style="color:rgba(255,255,255,0.45);">Phone:</span> <span id="user-phone"><?= \ConsultMee\Core\View::escape($user['phone'] ?? '') ?></span></p>
-          <p style="margin-bottom:4px; font-size:0.9rem;"><span style="color:rgba(255,255,255,0.45);">Email:</span> <span id="user-email"><?= \ConsultMee\Core\View::escape($user['email'] ?? '') ?></span></p>
+          <p style="margin-bottom:4px; font-size:0.9rem;"><span style="color:#94a3b8;">Username:</span> <span id="user-username"><?= \ConsultMee\Core\View::escape($user['username'] ?? '') ?></span></p>
+          <p style="margin-bottom:4px; font-size:0.9rem;"><span style="color:#94a3b8;">Identity:</span> <span id="user-identity"><?= \ConsultMee\Core\View::escape($user['identity'] ?? '') ?></span></p>
+          <p style="margin-bottom:4px; font-size:0.9rem;"><span style="color:#94a3b8;">Phone:</span> <span id="user-phone"><?= \ConsultMee\Core\View::escape($user['phone'] ?? '') ?></span></p>
+          <p style="margin-bottom:4px; font-size:0.9rem;"><span style="color:#94a3b8;">Email:</span> <span id="user-email"><?= \ConsultMee\Core\View::escape($user['email'] ?? '') ?></span></p>
           <p style="margin-bottom:0; font-size:0.9rem;">
-            <span style="color:rgba(255,255,255,0.45);">Interests:</span>
+            <span style="color:#94a3b8;">Interests:</span>
             <span id="user-interest1"><?= \ConsultMee\Core\View::escape($user['interest1'] ?? '') ?></span>,
             <span id="user-interest2"><?= \ConsultMee\Core\View::escape($user['interest2'] ?? '') ?></span>,
             <span id="user-interest3"><?= \ConsultMee\Core\View::escape($user['interest3'] ?? '') ?></span>
@@ -179,10 +176,10 @@ $industries = ["Agriculture","Artificial Intelligence","Astronomy","Automobiles 
           <input type="file" name="profile_image" id="edit-profile-image" class="dash-input" accept="image/*">
         </div>
         <div id="userUploadProgress" style="display:none; margin-bottom:10px;">
-          <div style="width:100%; background:rgba(255,255,255,0.1); border-radius:6px; overflow:hidden;">
+          <div style="width:100%; background:#e2e8f0; border-radius:6px; overflow:hidden;">
             <div id="userUploadBar" style="width:0%; height:8px; background:linear-gradient(90deg,#2563eb,#0ea5e9);"></div>
           </div>
-          <small id="userUploadText" style="color:rgba(255,255,255,0.5);">Uploading... 0%</small>
+          <small id="userUploadText" style="color:#64748b;">Uploading... 0%</small>
         </div>
         <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:16px;">
           <button type="button" onclick="saveUserProfile()"
@@ -190,7 +187,7 @@ $industries = ["Agriculture","Artificial Intelligence","Astronomy","Automobiles 
             Save Changes
           </button>
           <button type="button" onclick="closeEditForm()"
-            style="padding:10px 22px; border-radius:12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.7); font-weight:600; cursor:pointer;">
+            style="padding:10px 22px; border-radius:12px; background:#f1f5f9; border:1px solid #e2e8f0; color:#475569; font-weight:600; cursor:pointer;">
             Cancel
           </button>
         </div>
@@ -225,7 +222,7 @@ $industries = ["Agriculture","Artificial Intelligence","Astronomy","Automobiles 
           <div><label class="dash-label">External File Links</label><input type="text" name="links" class="dash-input" placeholder="https://..."></div>
         </div>
         <div class="modal-footer">
-          <button type="button" style="padding:9px 20px; border-radius:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.7); font-weight:600; cursor:pointer;" data-bs-dismiss="modal">Close</button>
+          <button type="button" style="padding:9px 20px; border-radius:10px; background:#f1f5f9; border:1px solid #e2e8f0; color:#475569; font-weight:600; cursor:pointer;" data-bs-dismiss="modal">Close</button>
           <button type="submit" style="padding:9px 20px; border-radius:10px; background:linear-gradient(90deg,#2563eb,#0ea5e9); color:white; font-weight:600; border:none; cursor:pointer;">Post Project</button>
         </div>
       </form>

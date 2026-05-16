@@ -1,51 +1,51 @@
-<main class="flex-1 flex items-center justify-center px-4 pt-24 pb-16">
+<main class="flex-1 flex items-center justify-center px-4 py-16">
   <div class="w-full max-w-md">
     <div class="text-center mb-8">
-      <img src="/assets/img/logo.png" alt="ConsultMee" class="h-12 w-auto mx-auto mb-5">
-      <h1 class="text-2xl font-black mb-1">Forgot Password</h1>
-      <p class="text-white/50 text-sm">Enter your email to receive a reset OTP</p>
+      <a href="/"><img src="/assets/img/logo.png" alt="ConsultMee" class="h-11 w-auto mx-auto mb-6"></a>
+      <h1 class="text-2xl font-black text-slate-900 mb-1">Forgot Password</h1>
+      <p class="text-slate-500 text-sm">Enter your email to receive a reset OTP</p>
     </div>
 
-    <div class="glass-card bg-white/8 backdrop-blur-xl border border-white/15 rounded-3xl p-8 shadow-2xl">
-      <div id="messageBox" class="mb-4 text-center text-sm font-semibold hidden rounded-xl px-4 py-3"></div>
+    <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+      <div id="messageBox" class="mb-5 text-center text-sm font-semibold hidden rounded-xl px-4 py-3"></div>
 
-      <form id="sendOtpForm" class="flex flex-col gap-4">
+      <form id="sendOtpForm" class="flex flex-col gap-5">
         <div>
-          <label class="block text-sm font-semibold mb-2 text-white/80">Email Address</label>
+          <label class="block text-sm font-semibold mb-2 text-slate-700">Email Address</label>
           <div class="relative">
-            <i class="bi bi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
-            <input type="email" id="email" name="email" class="form-input pl-11" placeholder="your@email.com" required>
+            <i class="bi bi-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="email" id="email" name="email" class="form-input pl-10" placeholder="your@email.com" required>
           </div>
         </div>
-        <button type="submit" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30 mt-1">
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-cobalt text-white font-semibold hover:bg-blue-700 transition-all shadow-sm mt-1">
           Send OTP <i class="bi bi-arrow-right ml-1"></i>
         </button>
       </form>
 
-      <form id="verifyOtpForm" class="hidden flex flex-col gap-4">
+      <form id="verifyOtpForm" class="hidden flex flex-col gap-5">
         <div>
-          <label class="block text-sm font-semibold mb-2 text-white/80">OTP Code</label>
+          <label class="block text-sm font-semibold mb-2 text-slate-700">OTP Code</label>
           <div class="relative">
-            <i class="bi bi-shield-lock absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
-            <input type="text" id="otp" name="otp" class="form-input pl-11" placeholder="6-digit OTP" maxlength="6" required>
+            <i class="bi bi-shield-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="otp" name="otp" class="form-input pl-10" placeholder="6-digit OTP" maxlength="6" required>
           </div>
         </div>
         <div>
-          <label class="block text-sm font-semibold mb-2 text-white/80">New Password</label>
+          <label class="block text-sm font-semibold mb-2 text-slate-700">New Password</label>
           <div class="relative">
-            <i class="bi bi-lock absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
-            <input type="password" id="new_password" name="new_password" class="form-input pl-11" placeholder="Create new password" required>
+            <i class="bi bi-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="password" id="new_password" name="new_password" class="form-input pl-10" placeholder="Create new password" required>
           </div>
         </div>
         <input type="hidden" id="verify_email" name="email">
-        <button type="submit" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30 mt-1">
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-cobalt text-white font-semibold hover:bg-blue-700 transition-all shadow-sm mt-1">
           Reset Password <i class="bi bi-check-circle ml-1"></i>
         </button>
       </form>
 
-      <p class="text-center text-white/50 text-sm mt-5">
-        Remembered? <a href="/login" class="text-accent hover:text-white font-medium transition-colors">Login</a>
-      </p>
+      <div class="border-t border-slate-100 mt-6 pt-5 text-center">
+        <p class="text-slate-500 text-sm">Remembered? <a href="/login" class="text-cobalt hover:underline font-semibold">Sign in</a></p>
+      </div>
     </div>
   </div>
 </main>
@@ -58,19 +58,9 @@
   function showMsg(text, type) {
     messageBox.classList.remove('hidden');
     messageBox.textContent = text;
-    if (type === 'error') {
-      messageBox.style.color = '#f87171';
-      messageBox.style.background = 'rgba(239,68,68,0.1)';
-      messageBox.style.border = '1px solid rgba(239,68,68,0.3)';
-    } else if (type === 'success') {
-      messageBox.style.color = '#34d399';
-      messageBox.style.background = 'rgba(52,211,153,0.1)';
-      messageBox.style.border = '1px solid rgba(52,211,153,0.3)';
-    } else {
-      messageBox.style.color = '#93c5fd';
-      messageBox.style.background = 'rgba(37,99,235,0.1)';
-      messageBox.style.border = '1px solid rgba(37,99,235,0.25)';
-    }
+    if (type === 'error') { messageBox.style.cssText = 'color:#dc2626;background:#fef2f2;border:1px solid #fecaca;padding:12px 16px;border-radius:10px;'; }
+    else if (type === 'success') { messageBox.style.cssText = 'color:#16a34a;background:#f0fdf4;border:1px solid #bbf7d0;padding:12px 16px;border-radius:10px;'; }
+    else { messageBox.style.cssText = 'color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;padding:12px 16px;border-radius:10px;'; }
   }
 
   sendOtpForm.addEventListener('submit', async (e) => {

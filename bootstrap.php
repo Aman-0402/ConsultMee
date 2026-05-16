@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-define('APP_ROOT', __DIR__);
-define('PUBLIC_ROOT', APP_ROOT . '/public');
+if (!defined('APP_ROOT')) define('APP_ROOT', __DIR__);
+if (!defined('PUBLIC_ROOT')) define('PUBLIC_ROOT', APP_ROOT . '/public');
 
 // ── Load .env ──────────────────────────────────────────────────────────────
 $envFile = APP_ROOT . '/.env';

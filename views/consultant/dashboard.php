@@ -1,18 +1,17 @@
 <style>
   :root { --sidebar-w: 260px; }
-  body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
-  .sidebar { width: var(--sidebar-w); background: rgba(255,255,255,0.04); border-right: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; height: 100vh; display: flex; flex-direction: column; z-index: 40; padding-top: 4rem; overflow-y: auto; }
-  .sidebar a { display: flex; align-items: center; gap: 10px; padding: 11px 20px; color: rgba(255,255,255,0.55); font-size: 0.875rem; font-weight: 600; text-decoration: none; border-radius: 10px; margin: 2px 10px; transition: all 0.18s; }
-  .sidebar a:hover, .sidebar a.active { background: rgba(37,99,235,0.18); color: #fff; }
+  body { background: #f1f5f9; color: #0f172a; font-family: 'Inter', sans-serif; }
+  .sidebar { width: var(--sidebar-w); background: #ffffff; border-right: 1px solid #e2e8f0; position: fixed; top: 0; left: 0; height: 100vh; display: flex; flex-direction: column; z-index: 40; padding-top: 4rem; overflow-y: auto; box-shadow: 2px 0 8px rgba(0,0,0,0.04); }
+  .sidebar a { display: flex; align-items: center; gap: 10px; padding: 11px 20px; color: #475569; font-size: 0.875rem; font-weight: 600; text-decoration: none; border-radius: 10px; margin: 2px 10px; transition: all 0.18s; }
+  .sidebar a:hover, .sidebar a.active { background: #eff6ff; color: #2563eb; }
   .sidebar a.active { border-left: 3px solid #2563eb; }
-  .main-area { margin-left: var(--sidebar-w); padding: 5rem 1.5rem 2rem; min-height: 100vh; }
-  .glass-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; position: relative; overflow: hidden; }
-  .glass-card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(ellipse at 20% 0%, rgba(37,99,235,0.14), transparent 65%); pointer-events: none; }
-  .dash-input { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.875rem; outline: none; transition: border-color 0.2s; }
-  .dash-input:focus { border-color: rgba(37,99,235,0.5); }
-  .dash-input option { background: #1e293b; color: #fff; }
+  .main-area { margin-left: var(--sidebar-w); padding: 5rem 1.5rem 2rem; min-height: 100vh; background: #f1f5f9; }
+  .glass-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .dash-input { width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; color: #0f172a; font-size: 0.875rem; outline: none; transition: border-color 0.2s; }
+  .dash-input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); background: #fff; }
+  .dash-input::placeholder { color: #94a3b8; }
   @media (max-width: 768px) {
-    .sidebar { width: 100%; height: auto; position: relative; padding-top: 1rem; flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .sidebar { width: 100%; height: auto; position: relative; padding-top: 1rem; flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid #e2e8f0; }
     .main-area { margin-left: 0; }
   }
 </style>
@@ -20,9 +19,9 @@
 <!-- SIDEBAR -->
 <div class="sidebar">
   <div class="px-4 mb-4">
-    <p class="text-white/30 text-xs font-bold uppercase tracking-widest mb-1">Consultant</p>
-    <p class="text-white font-black text-base"><?= \ConsultMee\Core\View::escape($_SESSION['consultant']['name'] ?? 'Consultant') ?></p>
-    <p class="text-white/40 text-xs">@<?= \ConsultMee\Core\View::escape($_SESSION['consultant']['username'] ?? '') ?></p>
+    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Consultant</p>
+    <p class="text-slate-900 font-black text-base"><?= \ConsultMee\Core\View::escape($_SESSION['consultant']['name'] ?? 'Consultant') ?></p>
+    <p class="text-slate-400 text-xs">@<?= \ConsultMee\Core\View::escape($_SESSION['consultant']['username'] ?? '') ?></p>
   </div>
   <nav>
     <a href="#appointments" onclick="showSection('appointments')"><i class="fa-solid fa-calendar-check fa-fw"></i> Appointments</a>
@@ -45,7 +44,7 @@
 <div class="main-area">
   <div class="mb-6">
     <h1 id="page-title" class="text-2xl font-black tracking-tight">Appointments</h1>
-    <p class="text-white/40 text-sm">Consultant Dashboard</p>
+    <p class="text-slate-400 text-sm">Consultant Dashboard</p>
   </div>
 
   <!-- CONFIRMED APPOINTMENTS -->
@@ -55,7 +54,7 @@
         <i class="bi bi-calendar-check-fill text-cobalt"></i> Confirmed Appointments
       </h2>
       <div id="appointments_content">
-        <p class="text-white/40 text-sm">Loading…</p>
+        <p class="text-slate-400 text-sm">Loading…</p>
       </div>
     </div>
   </div>
@@ -67,14 +66,14 @@
         <i class="bi bi-inbox-fill text-cobalt"></i> Appointment Requests
       </h2>
       <div id="appointments_list">
-        <p class="text-white/40 text-sm">Loading…</p>
+        <p class="text-slate-400 text-sm">Loading…</p>
       </div>
     </div>
   </div>
 
   <!-- HISTORY -->
   <div id="history" style="display:none;">
-    <p class="text-white/40 text-sm">Loading…</p>
+    <p class="text-slate-400 text-sm">Loading…</p>
   </div>
 
   <!-- BROWSE PROJECTS -->
@@ -91,9 +90,9 @@
         </button>
       </div>
       <div id="consultantProjectsContainer">
-        <p class="text-white/40 text-sm">Loading projects…</p>
+        <p class="text-slate-400 text-sm">Loading projects…</p>
       </div>
-      <div id="consultantProjectsPagination" class="mt-4 flex items-center gap-2 text-sm text-white/50"></div>
+      <div id="consultantProjectsPagination" class="mt-4 flex items-center gap-2 text-sm text-slate-500"></div>
     </div>
   </div>
 
@@ -101,7 +100,7 @@
   <div id="profile" style="display:none;">
     <div class="glass-card p-6">
       <div id="profile_card_container">
-        <p class="text-white/40 text-sm">Loading profile…</p>
+        <p class="text-slate-400 text-sm">Loading profile…</p>
       </div>
     </div>
   </div>
