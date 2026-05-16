@@ -40,7 +40,7 @@ $consultant = $result->fetch_assoc();
 
 /* Fetch Rating Summary */
 $ratingStmt = $conn->prepare("
-    SELECT 
+    SELECT
         ROUND(AVG(rating), 1) AS avg_rating,
         COUNT(*) AS total_reviews
     FROM consultant_ratings
@@ -64,398 +64,264 @@ $reviewStmt->bind_param("s", $username);
 $reviewStmt->execute();
 $reviews = $reviewStmt->get_result();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?php echo htmlspecialchars($consultant['name']); ?> | Consultant Profile</title>
+  <title><?php echo htmlspecialchars($consultant['name']); ?> | ConsultME</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cobalt: '#2563eb', accent: '#0ea5e9' },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico">
 
   <style>
-    /* ===============================
-       CONSULTME PREMIUM THEME
-    =============================== */
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    body { background: linear-gradient(135deg, #0a0f1e 0%, #0d1a3a 50%, #0a1628 100%); min-height: 100vh; }
 
-    * {
-      font-family: "Inter", sans-serif;
-    }
-
-    body {
-      background: radial-gradient(circle at top left, rgba(13,110,253,0.18), transparent 50%),
-                  radial-gradient(circle at bottom right, rgba(20,184,166,0.15), transparent 55%),
-                  linear-gradient(180deg, #f7f9ff 0%, #eef2f7 100%);
-      min-height: 100vh;
-      color: #0f172a;
-    }
-
-    /* Background subtle texture */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(rgba(15,23,42,0.05) 1px, transparent 1px);
-      background-size: 22px 22px;
-      opacity: 0.35;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .profile-wrapper {
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    /* Main Profile Card */
-    .profile-card {
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(12px);
-      border-radius: 22px;
-      padding: 40px;
-      border: 1px solid rgba(15,23,42,0.08);
-      box-shadow: 0 20px 55px rgba(15, 23, 42, 0.12);
+    .glass-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
       position: relative;
       overflow: hidden;
     }
-
-    /* Decorative glow */
-    .profile-card::after {
-      content: "";
+    .glass-card::before {
+      content: '';
       position: absolute;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(13,110,253,0.18), transparent 70%);
-      top: -70px;
-      right: -70px;
-      z-index: 0;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at 20% 0%, rgba(37,99,235,0.15), transparent 65%);
+      pointer-events: none;
     }
 
-    .profile-card * {
-      position: relative;
-      z-index: 2;
-    }
-
-    .profile-img {
-      width: 175px;
-      height: 175px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 6px solid rgba(13,110,253,0.9);
-      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.18);
-      transition: 0.3s ease;
-    }
-
-    .profile-img:hover {
-      transform: scale(1.05);
-    }
-
-    .consultant-name {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -0.6px;
-      margin-bottom: 4px;
-    }
-
-    .consultant-username {
-      color: #64748b;
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .badge-pill {
-      border-radius: 50px;
-      padding: 10px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      border: 1px solid rgba(15,23,42,0.08);
-      box-shadow: 0 10px 25px rgba(15,23,42,0.06);
-    }
-
-    .badge-identity {
-      background: linear-gradient(135deg, #0d6efd, #2563eb);
-      color: #fff;
-    }
-
-    .badge-expertise {
-      background: linear-gradient(135deg, #0f172a, #334155);
-      color: #fff;
-    }
-
-    .rating-box {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(255,255,255,0.8));
-      border: 1px solid rgba(245,158,11,0.25);
-      font-weight: 700;
-      color: #0f172a;
-      box-shadow: 0 10px 25px rgba(15,23,42,0.06);
-    }
-
-    .rating-box i {
-      color: #f59e0b;
-      font-size: 18px;
-    }
-
-    .info-grid {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .info-card {
-      padding: 16px 18px;
+    .info-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 16px;
-      background: rgba(255,255,255,0.8);
-      border: 1px solid rgba(15,23,42,0.08);
-      box-shadow: 0 10px 25px rgba(15,23,42,0.06);
-      transition: 0.25s ease;
+      padding: 14px 16px;
+      transition: all 0.2s;
     }
-
-    .info-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 45px rgba(15,23,42,0.12);
-    }
-
-    .info-card small {
-      color: #64748b;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .info-card strong {
-      font-size: 15px;
-      font-weight: 800;
-      color: #0f172a;
-    }
-
-    .bio-title {
-      font-weight: 800;
-      margin-top: 26px;
-      font-size: 18px;
-    }
-
-    .bio-text {
-      color: #475569;
-      line-height: 1.85;
-      font-size: 15px;
-      margin-top: 6px;
-    }
-
-    /* Reviews Section */
-    .section-title {
-      font-weight: 900;
-      font-size: 22px;
-      margin-top: 35px;
-      margin-bottom: 18px;
-      letter-spacing: -0.4px;
+    .info-box:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37,99,235,0.3);
+      background: rgba(37,99,235,0.08);
     }
 
     .review-card {
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
       border-radius: 18px;
-      padding: 18px 20px;
-      border: 1px solid rgba(15,23,42,0.08);
-      box-shadow: 0 14px 35px rgba(15,23,42,0.08);
-      transition: 0.25s ease;
+      padding: 20px;
+      transition: all 0.2s;
     }
-
     .review-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 22px 50px rgba(15,23,42,0.12);
+      transform: translateY(-2px);
+      border-color: rgba(37,99,235,0.25);
     }
 
-    .review-user {
-      font-weight: 800;
-      font-size: 15px;
-      color: #0f172a;
-    }
-
-    .review-date {
-      font-size: 13px;
-      font-weight: 600;
-      color: #64748b;
-    }
-
-    .stars {
-      color: #f59e0b;
-      font-size: 18px;
-      letter-spacing: 2px;
-    }
-
-    .review-feedback {
-      margin-top: 8px;
-      font-size: 14.5px;
-      color: #475569;
-      line-height: 1.75;
-    }
-
-    .empty-reviews {
-      background: rgba(255,255,255,0.8);
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px dashed rgba(15,23,42,0.15);
-      color: #64748b;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    /* Responsive */
-    @media(max-width: 992px) {
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-      .profile-card {
-        padding: 28px;
-      }
-      .consultant-name {
-        font-size: 26px;
-      }
-    }
+    .star-filled { color: #f59e0b; }
+    .star-empty { color: rgba(255,255,255,0.2); }
   </style>
-
 </head>
+<body class="text-white">
 
-<body>
-
-<div class="container py-5 profile-wrapper">
-
-  <!-- PROFILE CARD -->
-  <div class="profile-card mb-4">
-    <div class="row g-4 align-items-center">
-
-      <!-- Profile Image -->
-      <div class="col-lg-4 text-center">
-        <img class="profile-img"
-             src="./uploads/consultants/<?php echo !empty($consultant['profile_img']) ? htmlspecialchars($consultant['profile_img']) : 'default.png'; ?>"
-             alt="Consultant Profile">
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="https://consultmee.in">
+          <img src="./assets/img/logo.png" alt="ConsultME" class="h-9 w-auto">
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="https://consultmee.in" class="text-white/70 text-sm hover:text-white transition-colors">Home</a>
+          <a href="./services" class="text-white/70 text-sm hover:text-white transition-colors">Services</a>
+          <a href="./about" class="text-white/70 text-sm hover:text-white transition-colors">About</a>
+          <a href="./contact" class="text-white/70 text-sm hover:text-white transition-colors">Contact</a>
+        </div>
+        <a href="dashboard.php" class="px-4 py-2 rounded-full border border-white/30 text-white text-sm hover:bg-white/10 transition-all">
+          <i class="bi bi-grid-fill me-1"></i> Dashboard
+        </a>
       </div>
+    </div>
+  </nav>
 
-      <!-- Profile Info -->
-      <div class="col-lg-8">
-        <h2 class="consultant-name"><?php echo htmlspecialchars($consultant['name']); ?></h2>
-        <p class="consultant-username mb-3">@<?php echo htmlspecialchars($consultant['username']); ?></p>
+  <!-- MAIN -->
+  <main class="max-w-5xl mx-auto px-4 pt-28 pb-16">
 
-        <!-- Badges -->
-        <div class="d-flex flex-wrap gap-2 mb-3">
-          <span class="badge-pill badge-identity">
-            <i class="fa-solid fa-user-tie me-2"></i>
-            <?php echo htmlspecialchars($consultant['identity'] ?? "Consultant"); ?>
-          </span>
+    <!-- PROFILE CARD -->
+    <div class="glass-card p-8 mb-8 shadow-2xl">
+      <div class="flex flex-col lg:flex-row gap-8 items-start">
 
-          <?php if (!empty($consultant['area_of_expertise'])) { ?>
-            <span class="badge-pill badge-expertise">
-              <i class="fa-solid fa-briefcase me-2"></i>
+        <!-- Left: Avatar -->
+        <div class="flex flex-col items-center lg:w-56 shrink-0">
+          <div class="relative">
+            <img
+              src="./uploads/consultants/<?php echo !empty($consultant['profile_img']) ? htmlspecialchars($consultant['profile_img']) : 'default.png'; ?>"
+              alt="<?php echo htmlspecialchars($consultant['name']); ?>"
+              class="w-44 h-44 rounded-full object-cover border-4 border-cobalt/50 shadow-2xl shadow-blue-500/20 hover:scale-105 transition-transform"
+            >
+            <span class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-400 border-2 border-white/20 rounded-full"></span>
+          </div>
+
+          <!-- Rating badge -->
+          <div class="mt-4 flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-400">
+            <i class="bi bi-star-fill text-sm"></i>
+            <span class="font-bold text-sm"><?php echo $avgRating ?: 'N/A'; ?>/5</span>
+            <span class="text-amber-400/60 text-xs">(<?php echo $totalReviews; ?>)</span>
+          </div>
+        </div>
+
+        <!-- Right: Info -->
+        <div class="flex-1 min-w-0">
+
+          <!-- Name + Username -->
+          <h1 class="text-3xl font-black tracking-tight mb-0.5">
+            <?php echo htmlspecialchars($consultant['name']); ?>
+          </h1>
+          <p class="text-white/45 font-medium mb-4">@<?php echo htmlspecialchars($consultant['username']); ?></p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-cobalt to-accent text-white text-xs font-bold shadow-lg shadow-blue-500/20">
+              <i class="bi bi-person-badge-fill"></i>
+              <?php echo htmlspecialchars($consultant['identity'] ?? 'Consultant'); ?>
+            </span>
+            <?php if (!empty($consultant['area_of_expertise'])) { ?>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white text-xs font-bold">
+              <i class="bi bi-briefcase-fill"></i>
               <?php echo htmlspecialchars($consultant['area_of_expertise']); ?>
             </span>
+            <?php } ?>
+          </div>
+
+          <!-- Info Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+            <div class="info-box">
+              <p class="text-white/40 text-xs font-semibold uppercase tracking-wider mb-1">
+                <i class="bi bi-geo-alt-fill me-1 text-cobalt"></i>State
+              </p>
+              <p class="text-white font-bold text-sm"><?php echo htmlspecialchars($consultant['state'] ?? 'N/A'); ?></p>
+            </div>
+            <div class="info-box">
+              <p class="text-white/40 text-xs font-semibold uppercase tracking-wider mb-1">
+                <i class="bi bi-currency-rupee me-1 text-cobalt"></i>Hourly Rate
+              </p>
+              <p class="text-white font-bold text-sm">
+                ₹<?php echo htmlspecialchars($consultant['hourly_rate'] ?? 'N/A'); ?>/Hour
+              </p>
+            </div>
+            <div class="info-box">
+              <p class="text-white/40 text-xs font-semibold uppercase tracking-wider mb-1">
+                <i class="bi bi-graph-up-arrow me-1 text-cobalt"></i>Experience
+              </p>
+              <p class="text-white font-bold text-sm"><?php echo htmlspecialchars($consultant['experience'] ?? 'N/A'); ?></p>
+            </div>
+          </div>
+
+          <!-- Bio -->
+          <div>
+            <h3 class="font-bold text-white mb-2 flex items-center gap-2">
+              <i class="bi bi-info-circle-fill text-cobalt"></i> About
+            </h3>
+            <p class="text-white/60 leading-relaxed text-sm">
+              <?php echo !empty($consultant['bio']) ? nl2br(htmlspecialchars($consultant['bio'])) : 'No bio available.'; ?>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOK APPOINTMENT CTA -->
+    <div class="glass-card p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="font-bold text-lg">Ready to consult?</h3>
+        <p class="text-white/45 text-sm">Book a session with <?php echo htmlspecialchars($consultant['name']); ?> today.</p>
+      </div>
+      <a href="dashboard.php#consultant-list"
+         class="px-6 py-3 rounded-2xl bg-gradient-to-r from-cobalt to-accent text-white font-bold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30 whitespace-nowrap">
+        <i class="bi bi-calendar-check me-2"></i>Book Appointment
+      </a>
+    </div>
+
+    <!-- REVIEWS -->
+    <div>
+      <h2 class="text-xl font-black mb-5 flex items-center gap-2">
+        <i class="bi bi-chat-square-quote-fill text-cobalt"></i>
+        Ratings &amp; Reviews
+        <span class="text-sm font-semibold text-white/35 ml-1">(<?php echo $totalReviews; ?>)</span>
+      </h2>
+
+      <?php if ($totalReviews == 0) { ?>
+        <div class="glass-card p-8 text-center">
+          <i class="bi bi-chat-left-dots text-white/20 text-4xl block mb-3"></i>
+          <p class="text-white/45 font-semibold">No reviews yet. Be the first to review this consultant!</p>
+        </div>
+      <?php } else { ?>
+
+        <div class="flex flex-col gap-4">
+          <?php while ($r = $reviews->fetch_assoc()) { ?>
+          <div class="review-card">
+
+            <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
+              <span class="font-bold text-sm flex items-center gap-2">
+                <span class="w-7 h-7 rounded-full bg-cobalt/30 flex items-center justify-center text-xs font-black text-cobalt uppercase">
+                  <?php echo strtoupper(substr($r['user_username'], 0, 1)); ?>
+                </span>
+                <?php echo htmlspecialchars($r['user_username']); ?>
+              </span>
+              <span class="text-white/35 text-xs font-medium">
+                <i class="bi bi-calendar3 me-1"></i>
+                <?php echo date("d M Y", strtotime($r['created_at'])); ?>
+              </span>
+            </div>
+
+            <!-- Stars -->
+            <div class="flex items-center gap-1 mb-3">
+              <?php
+                $stars = (int)$r['rating'];
+                for ($i = 1; $i <= 5; $i++) {
+                  echo $i <= $stars
+                    ? '<i class="bi bi-star-fill star-filled"></i>'
+                    : '<i class="bi bi-star star-empty"></i>';
+                }
+              ?>
+              <span class="text-white/35 text-xs ml-1 font-semibold">(<?php echo $stars; ?>/5)</span>
+            </div>
+
+            <p class="text-white/55 text-sm leading-relaxed">
+              <?php echo !empty($r['feedback']) ? htmlspecialchars($r['feedback']) : 'No feedback given.'; ?>
+            </p>
+
+          </div>
           <?php } ?>
         </div>
 
-        <!-- Rating -->
-        <div class="mb-3">
-          <span class="rating-box">
-            <i class="fa-solid fa-star"></i>
-            <?php echo $avgRating; ?>/5
-            <span style="font-weight:600;color:#475569;">
-              (<?php echo $totalReviews; ?> Reviews)
-            </span>
-          </span>
-        </div>
-
-        <!-- Info Grid -->
-        <div class="info-grid">
-          <div class="info-card">
-            <small><i class="fa-solid fa-location-dot me-2"></i>State</small>
-            <strong><?php echo htmlspecialchars($consultant['state'] ?? 'N/A'); ?></strong>
-          </div>
-
-          <div class="info-card">
-            <small><i class="fa-solid fa-indian-rupee-sign me-2"></i>Hourly Rate</small>
-            <strong>₹<?php echo htmlspecialchars($consultant['hourly_rate'] ?? 'N/A'); ?>/Hour</strong>
-          </div>
-
-          <div class="info-card">
-            <small><i class="fa-solid fa-chart-line me-2"></i>Experience</small>
-            <strong><?php echo htmlspecialchars($consultant['experience'] ?? 'N/A'); ?></strong>
-          </div>
-        </div>
-
-        <!-- Bio -->
-        <h5 class="bio-title">
-          <i class="fa-solid fa-circle-info me-2 text-primary"></i>Bio
-        </h5>
-        <p class="bio-text">
-          <?php echo !empty($consultant['bio']) ? nl2br(htmlspecialchars($consultant['bio'])) : "No bio available."; ?>
-        </p>
-
-      </div>
-
+      <?php } ?>
     </div>
-  </div>
 
-  <!-- REVIEWS -->
-  <h4 class="section-title">
-    <i class="fa-solid fa-comments text-primary me-2"></i>Ratings & Reviews
-  </h4>
-
-  <?php if ($totalReviews == 0) { ?>
-    <div class="empty-reviews">
-      <i class="fa-regular fa-face-smile me-2"></i>
-      No reviews yet. Be the first to review this consultant!
-    </div>
-  <?php } else { ?>
-
-    <?php while ($r = $reviews->fetch_assoc()) { ?>
-      <div class="review-card mb-3">
-
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <span class="review-user">
-            <i class="fa-solid fa-user me-2 text-primary"></i>
-            <?php echo htmlspecialchars($r['user_username']); ?>
-          </span>
-
-          <span class="review-date">
-            <i class="fa-regular fa-calendar me-2"></i>
-            <?php echo date("d M Y", strtotime($r['created_at'])); ?>
-          </span>
-        </div>
-
-        <div class="stars mb-2">
-          <?php
-            $stars = (int)$r['rating'];
-            for ($i=1; $i<=5; $i++) {
-              echo ($i <= $stars) ? "★" : "☆";
-            }
-          ?>
-          <span class="text-muted" style="font-size:14px; font-weight:600;">
-            (<?php echo $stars; ?>/5)
-          </span>
-        </div>
-
-        <p class="review-feedback mb-0">
-          <?php echo !empty($r['feedback']) ? htmlspecialchars($r['feedback']) : "No feedback given."; ?>
-        </p>
-
-      </div>
-    <?php } ?>
-
-  <?php } ?>
-
-</div>
+  </main>
 
 </body>
 </html>

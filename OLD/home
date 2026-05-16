@@ -16,765 +16,689 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.consultmee.in/" />
-  <meta property="og:title" content="ConsultME | India’s Top Consultancy & Mentorship Platform" />
+  <meta property="og:title" content="ConsultME | India's Top Consultancy & Mentorship Platform" />
   <meta property="og:description" content="Find experts across Business, Legal, Finance, AI, Media, and Healthcare domains. ConsultME helps you get personalized solutions and professional mentorship instantly." />
 
-  <!-- Bootstrap & icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0d6efd',
+            cobalt: '#2563eb',
+            accent: '#0ea5e9',
+            navy: '#0f172a',
+            muted: '#64748b',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/assets/img/logox.ico">
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-  <!-- External stylesheet -->
-  <link rel="stylesheet" href="./CSS/main.css">
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    body { background: #0a0f1e; }
+
+    /* Glass card glow */
+    .glass-card { position: relative; overflow: hidden; }
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at 30% 0%, rgba(37,99,235,0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Navbar scrolled state */
+    .navbar-scrolled { background: rgba(10,15,30,0.95) !important; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+
+    /* Counter animation */
+    .counter { font-variant-numeric: tabular-nums; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    /* Hero gradient bg */
+    .hero-bg {
+      background: linear-gradient(135deg, #0a0f1e 0%, #0d1a3a 50%, #0a1628 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(14,165,233,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Section alternating bg */
+    .section-dark { background: #080d1c; }
+    .section-mid  { background: #0d1530; }
+
+    /* Mobile nav open bg */
+    #mobile-menu { background: rgba(10,15,30,0.97); backdrop-filter: blur(20px); }
+  </style>
 </head>
 
-<body>
-    <!-- Navigation bar start -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-    
+<body class="text-white">
+
+  <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+
         <!-- Logo -->
-        <a class="navbar-brand" href="https://consultmee.in">
-          <img src="./assets/img/logo.png" alt="Logo" class="navbar-logo">
+        <a href="https://consultmee.in" class="flex items-center gap-2 flex-shrink-0">
+          <img src="./assets/img/logo.png" alt="ConsultME" class="h-9 lg:h-11 w-auto">
         </a>
-    
-        <!-- Mobile Toggle -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+
+        <!-- Desktop nav links -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="https://consultmee.in" class="text-white font-medium hover:text-accent transition-colors">Home</a>
+          <a href="./services" class="text-white/70 font-medium hover:text-white transition-colors">Services</a>
+          <a href="./about" class="text-white/70 font-medium hover:text-white transition-colors">About Us</a>
+          <a href="./contact" class="text-white/70 font-medium hover:text-white transition-colors">Contact</a>
+        </div>
+
+        <!-- Desktop auth buttons -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="create-account" class="px-5 py-2 rounded-full border border-white/30 text-white font-medium text-sm hover:bg-white/10 transition-all">Sign Up</a>
+          <a href="login-account" class="px-5 py-2 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-medium text-sm hover:-translate-y-0.5 transition-all shadow-lg shadow-blue-500/25">Login</a>
+        </div>
+
+        <!-- Mobile menu toggle -->
+        <button id="menu-toggle" class="lg:hidden p-2 rounded-lg text-white/80 hover:text-white" aria-label="Toggle menu">
+          <i class="bi bi-list text-2xl" id="menu-icon"></i>
         </button>
-    
-        <!-- Collapsible Content -->
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    
-          <!-- Nav links (right after logo) -->
-          <div class="navbar-nav text-center">
-            <a class="nav-link active" aria-current="page" href="https://consultmee.in">Home</a>
-            <a class="nav-link" href="./services">Services</a>
-            <a class="nav-link" href="./about">About us</a>
-            <a class="nav-link" href="./contact">Contact us</a>
-          </div>
-    
-          <!-- Auth Buttons (right aligned) -->
-          <div class="d-flex gap-2 justify-content-center ms-lg-auto mt-lg-0 mt-3">
-            <a href="create-account" class="btn btn-outline-primary">Signup</a>
-            <a href="login-account" class="btn btn-outline-dark">Login</a>
-          </div>
-    
-        </div>
-      </div>
-    </nav>
-    <!-- Navigation bar end -->
-
-
-<!-- Home page banner -->
-<section class="hero-f500">
-  <div class="container">
-
-    <div class="hero-grid">
-
-      <!-- LEFT -->
-      <div class="hero-content">
-
-        <!-- TAG -->
-        <span class="hero-tag">
-          On-Demand Expert Network for Business & Tech Decisions
-        </span>
-
-        <!-- HEADLINE -->
-        <h1 class="hero-title">
-          Stop Guessing. Ask an Expert.
-        </h1>
-
-        <!-- DESCRIPTION 
-        <p class="hero-description">
-          ConsultME connects you with pre-vetted industry experts to solve critical business, technology, finance, and legal challenges without long-term consulting contracts.
-        </p>
-        -->
-
-        <!-- URGENCY -->
-        <p class="hero-urgency">
-          Get matched with the right expert within  24 hours
-        </p>
-        <!-- CTA -->
-        <div class="hero-actions">
-          <a href="./create-account" class="btn-primary">
-            Get Started →
-          </a>
-          <a href="./login-account" class="btn-secondary">
-            Browse Experts
-          </a>
-        </div>
-
-        <!-- MICROCOPY -->
-        <p class="hero-microcopy">
-          No commitment • Fast matching • Confidential discussions
-        </p>
-
-        <!-- TRUST STRIP -->
-        <div class="hero-trust">
-          <p class="trust-label">Professionals from companies like</p>
-          <div class="trust-logos">
-            <span>Google</span>
-            <span>Infosys</span>
-            <span>TCS</span>
-            <span>Accenture</span>
-            <span>Funded Startups</span>
-          </div>
-        </div>
-
-        <!-- METRICS -->
-        <div class="hero-metrics">
-          <div>
-            <strong>1200+</strong>
-            <span>Verified Experts</span>
-          </div>
-          <div>
-            <strong>25+</strong>
-            <span>Industries</span>
-          </div>
-          <div>
-            <strong>1000+</strong>
-            <span>Consultations Completed</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- RIGHT PANEL -->
-      <div class="hero-panel">
-
-        <div class="panel-card">
-
-          <h4>How It Works</h4>
-
-          <div class="step">
-            <span>01</span>
-            <p>Tell us your problem</p>
-          </div>
-
-          <div class="step">
-            <span>02</span>
-            <p>Get matched with experts</p>
-          </div>
-
-          <div class="step">
-            <span>03</span>
-            <p>Consult & validate strategy</p>
-          </div>
-
-          <div class="step">
-            <span>04</span>
-            <p>Execute with clarity</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-  <!-- Solutions / Accordion -->
-  <section class="py-5 solutions-section">
-  <div class="container">
-
-    <!-- HEADER -->
-    <div class="row mb-5">
-      <div class="col-lg-8">
-        <h6 class="text-uppercase text-primary fw-semibold mb-2"
-            style="letter-spacing:0.25em;">
-          Our Solutions
-        </h6>
-
-        <h2 class="fw-bold display-6 mb-3">
-          Expertise That Translates <br>
-          <span class="text-primary">Into Real Results</span>
-        </h2>
-
-        <p class="text-muted fs-5" style="max-width:720px;">
-          ConsultME delivers expert-led solutions designed to help individuals,
-          startups, and enterprises make better decisions and move faster.
-        </p>
       </div>
     </div>
 
-    <!-- CARDS -->
-    <div class="row g-4">
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10">
+      <div class="px-4 py-4 flex flex-col gap-3">
+        <a href="https://consultmee.in" class="text-white font-medium py-2">Home</a>
+        <a href="./services" class="text-white/70 font-medium py-2 hover:text-white">Services</a>
+        <a href="./about" class="text-white/70 font-medium py-2 hover:text-white">About Us</a>
+        <a href="./contact" class="text-white/70 font-medium py-2 hover:text-white">Contact</a>
+        <div class="flex gap-3 pt-2 border-t border-white/10">
+          <a href="create-account" class="flex-1 text-center px-4 py-2 rounded-full border border-white/30 text-white text-sm">Sign Up</a>
+          <a href="login-account" class="flex-1 text-center px-4 py-2 rounded-full bg-gradient-to-r from-cobalt to-accent text-white text-sm">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- ═══════════════════════════ /NAVBAR ═══════════════════════════ -->
 
-      <!-- CARD 1 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="solution-card h-100">
-          <i class="bi bi-bullseye solution-icon"></i>
-          <h5 class="fw-semibold mt-3">Precision Guidance</h5>
-          <p class="text-muted mb-0">
-            Tailored expert advice aligned with your goals, industry, and growth stage.
+
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+  <section class="hero-bg min-h-screen flex items-center pt-20 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- LEFT: content -->
+        <div>
+          <!-- Tag -->
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cobalt/20 border border-cobalt/30 text-accent text-sm font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+            On-Demand Expert Network for Business &amp; Tech Decisions
+          </span>
+
+          <!-- Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+            Stop Guessing.<br>
+            <span class="bg-gradient-to-r from-cobalt via-primary to-accent bg-clip-text text-transparent">Ask an Expert.</span>
+          </h1>
+
+          <!-- Urgency -->
+          <p class="text-white/70 text-lg mb-8">
+            Get matched with the right expert within <span class="text-accent font-semibold">24 hours</span>
           </p>
+
+          <!-- CTA buttons -->
+          <div class="flex flex-wrap gap-4 mb-8">
+            <a href="./create-account" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30 text-base">
+              Get Started <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="./login-account" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold hover:bg-white/15 transition-all text-base">
+              Browse Experts
+            </a>
+          </div>
+
+          <!-- Microcopy -->
+          <p class="text-white/40 text-sm mb-10">No commitment &bull; Fast matching &bull; Confidential discussions</p>
+
+          <!-- Trust strip -->
+          <div class="mb-10">
+            <p class="text-white/40 text-xs uppercase tracking-widest mb-3">Professionals from companies like</p>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 text-sm">Google</span>
+              <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 text-sm">Infosys</span>
+              <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 text-sm">TCS</span>
+              <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 text-sm">Accenture</span>
+              <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 text-sm">Funded Startups</span>
+            </div>
+          </div>
+
+          <!-- Metrics -->
+          <div class="grid grid-cols-3 gap-4">
+            <div class="text-center">
+              <div class="text-2xl font-black bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">1200+</div>
+              <div class="text-white/50 text-xs mt-1">Verified Experts</div>
+            </div>
+            <div class="text-center border-x border-white/10">
+              <div class="text-2xl font-black bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">25+</div>
+              <div class="text-white/50 text-xs mt-1">Industries</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-black bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">1000+</div>
+              <div class="text-white/50 text-xs mt-1">Consultations</div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- CARD 2 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="solution-card h-100">
-          <i class="bi bi-diagram-3 solution-icon"></i>
-          <h5 class="fw-semibold mt-3">End-to-End Consulting</h5>
-          <p class="text-muted mb-0">
-            From strategy and planning to execution and optimization handled seamlessly.
-          </p>
-        </div>
-      </div>
+        <!-- RIGHT: How It Works card + 3D canvas -->
+        <div class="relative flex flex-col items-center gap-6">
+          <!-- 3D canvas -->
+          <canvas id="hero3d" class="absolute inset-0 w-full h-full pointer-events-none opacity-60"></canvas>
 
-      <!-- CARD 3 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="solution-card h-100">
-          <i class="bi bi-people solution-icon"></i>
-          <h5 class="fw-semibold mt-3">Elite Expert Network</h5>
-          <p class="text-muted mb-0">
-            Access a curated pool of verified professionals across 50+ domains.
-          </p>
-        </div>
-      </div>
+          <!-- Glass card -->
+          <div class="glass-card relative z-10 w-full max-w-sm bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-2xl">
+            <h4 class="text-xl font-bold mb-6 text-white">How It Works</h4>
 
-      <!-- CARD 4 -->
-      <div class="col-md-6 col-lg-3">
-        <div class="solution-card h-100">
-          <i class="bi bi-graph-up-arrow solution-icon"></i>
-          <h5 class="fw-semibold mt-3">Growth Roadmaps</h5>
-          <p class="text-muted mb-0">
-            Clear, measurable plans for career acceleration and business scaling.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- METRICS -->
-    <div class="row text-center mt-5 gy-4 metrics-section" id="metrics">
-    
-      <div class="col-4">
-        <h2 class="fw-bold text-primary mb-1 counter" data-target="1200" data-suffix="+">0</h2>
-        <p class="small text-muted mb-0">Experts</p>
-      </div>
-    
-      <div class="col-4">
-        <h2 class="fw-bold text-primary mb-1 counter" data-target="98" data-suffix="%">0</h2>
-        <p class="small text-muted mb-0">Satisfaction</p>
-      </div>
-    
-      <div class="col-4">
-        <h2 class="fw-bold text-primary mb-1 counter" data-target="25" data-suffix="+">0</h2>
-        <p class="small text-muted mb-0">Industries</p>
-      </div>
-    
-    </div>
-
-
-
-    <!-- CTA -->
-    <div class="row mt-5">
-      <div class="col text-center">
-        <a href="create-account" class="btn btn-primary px-5 py-3 rounded-pill">
-          Speak With an Expert
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Our Services -->
-    <section class="container py-5 services-section">
-      <h6 class="text-uppercase text-primary text-center">Our Services</h6>
-      <h2 class="fw-bold text-center mb-5">Connect Clients & Consultants</h2>
-    
-      <div class="row g-4">
-    
-        <!-- Appointment Booking -->
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm service-card">
-            <div class="card-body text-center">
-              <div class="service-icon mb-3">
-                <i class="bi bi-calendar-check fs-1 text-primary"></i>
+            <div class="flex flex-col gap-5">
+              <div class="flex items-start gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-xl bg-cobalt/30 border border-cobalt/40 flex items-center justify-center text-accent font-bold text-sm">01</span>
+                <p class="text-white/80 pt-1.5 font-medium">Tell us your problem</p>
               </div>
-              <h5 class="fw-bold">Appointment Booking</h5>
-              <p class="text-muted">
-                Schedule meetings with verified consultants seamlessly through our easy appointment system.
-              </p>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Project / Task Posting -->
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm service-card">
-            <div class="card-body text-center">
-              <div class="service-icon mb-3">
-                <i class="bi bi-kanban fs-1 text-success"></i>
+              <div class="flex items-start gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-xl bg-cobalt/30 border border-cobalt/40 flex items-center justify-center text-accent font-bold text-sm">02</span>
+                <p class="text-white/80 pt-1.5 font-medium">Get matched with experts</p>
               </div>
-              <h5 class="fw-bold">Project / Task Posting</h5>
-              <p class="text-muted">
-                Post your project requirements and receive proposals from expert consultants instantly.
-              </p>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Consultant Suggestions -->
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm service-card">
-            <div class="card-body text-center">
-              <div class="service-icon mb-3">
-                <i class="bi bi-person-lines-fill fs-1 text-warning"></i>
+              <div class="flex items-start gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-xl bg-cobalt/30 border border-cobalt/40 flex items-center justify-center text-accent font-bold text-sm">03</span>
+                <p class="text-white/80 pt-1.5 font-medium">Consult &amp; validate strategy</p>
               </div>
-              <h5 class="fw-bold">Consultant Suggestions</h5>
-              <p class="text-muted">
-                Get AI-driven recommendations to match you with the most suitable industry experts.
-              </p>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Affordable Pricings -->
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm service-card">
-            <div class="card-body text-center">
-              <div class="service-icon mb-3">
-                <i class="bi bi-currency-rupee fs-1 text-danger"></i>
+              <div class="flex items-start gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-xl bg-cobalt/30 border border-cobalt/40 flex items-center justify-center text-accent font-bold text-sm">04</span>
+                <p class="text-white/80 pt-1.5 font-medium">Execute with clarity</p>
               </div>
-              <h5 class="fw-bold">Affordable Pricing</h5>
-              <p class="text-muted">
-                Transparent and budget-friendly pricing models suitable for startups, MSMEs, and enterprises.
-              </p>
             </div>
           </div>
         </div>
-    
-        <!-- One Click Booking -->
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm service-card">
-            <div class="card-body text-center">
-              <div class="service-icon mb-3">
-                <i class="bi bi-lightning-charge fs-1 text-info"></i>
-              </div>
-              <h5 class="fw-bold">One-Click Booking</h5>
-              <p class="text-muted">
-                Confirm and book your consultant instantly with a fast and hassle-free one-click process.
-              </p>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Multi Industry Expertise -->
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm service-card">
-            <div class="card-body text-center">
-              <div class="service-icon mb-3">
-                <i class="bi bi-globe2 fs-1 text-secondary"></i>
-              </div>
-              <h5 class="fw-bold">Multi Industry Expertise</h5>
-              <p class="text-muted">
-                Access professionals across technology, legal, finance, healthcare, media, and more.
-              </p>
-            </div>
-          </div>
-        </div>
-    
+
       </div>
-    
-      <div class="text-center mt-5">
-        <a href="./create-account" class="btn btn-lg btn-primary px-4">
-          Explore All Services
-        </a>
-      </div>
-    </section>
-
-
-<!-- Philosophy -->
-<section class="py-5 philosophy-section position-relative">
-  <div class="container">
-    <!-- HEADER -->
-    <div class="row mb-5 align-items-center">
-      <div class="col-lg-8">
-        <h6 class="text-uppercase text-primary fw-semibold mb-3"
-            style="letter-spacing:0.25em;">
-          Our Philosophy
-        </h6>
-
-        <h2 class="fw-bold display-5 mb-3">
-          Building Meaningful Connections <br>
-          <span class="text-primary">Between Vision & Expertise</span>
-        </h2>
-
-        <p class="text-muted fs-5 mb-0">
-          At ConsultME, we believe access to the right expert at the right time
-          can transform uncertainty into structured growth.
-        </p>
-      </div>
-    </div>
-
-    <!-- CORE STATEMENT CARD -->
-    <div class="row mb-5">
-      <div class="col-lg-10">
-        <div class="philosophy-core shadow-sm rounded-4 p-4 p-lg-5 bg-light border-start border-4 border-primary reveal">
-          
-          <div class="d-flex align-items-start gap-3">
-            <p class="fs-5 text-muted mb-0">
-              We empower individuals, startups, and enterprises by connecting them
-              with verified consultants who convert clarity into action -
-              enabling confident decisions, faster execution, and measurable impact.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- PRINCIPLE CARDS -->
-    <div class="row g-4">
-
-      <!-- Clarity -->
-      <div class="col-md-4">
-        <div class="philosophy-card h-100 p-4 shadow-sm rounded-4 reveal bg-white text-center">
-          <div class="mb-3">
-            <i class="bi bi-compass-fill philosophy-icon fs-2 text-primary"></i>
-          </div>
-          <h5 class="fw-semibold">Clarity Before Complexity</h5>
-          <p class="text-muted mb-0">
-            We simplify complex challenges into structured insights,
-            helping you move forward with focus and direction.
-          </p>
-        </div>
-      </div>
-
-      <!-- Experience -->
-      <div class="col-md-4">
-        <div class="philosophy-card h-100 p-4 shadow-sm rounded-4 reveal bg-white text-center">
-          <div class="mb-3">
-            <i class="bi bi-person-badge-fill philosophy-icon fs-2 text-success"></i>
-          </div>
-          <h5 class="fw-semibold">Experience-Led Guidance</h5>
-          <p class="text-muted mb-0">
-            Our consultants bring real-world execution experience -
-            not just theory - ensuring practical, results-driven advice.
-          </p>
-        </div>
-      </div>
-
-      <!-- Growth -->
-      <div class="col-md-4">
-        <div class="philosophy-card h-100 p-4 shadow-sm rounded-4 reveal bg-white text-center">
-          <div class="mb-3">
-            <i class="bi bi-graph-up-arrow philosophy-icon fs-2 text-warning"></i>
-          </div>
-          <h5 class="fw-semibold">Outcome-Focused Growth</h5>
-          <p class="text-muted mb-0">
-            We measure success through impact - scalable systems,
-            stronger decisions, and sustainable long-term growth.
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- OPTIONAL CTA -->
-    <div class="text-center mt-5">
-      <a href="./create-account" class="btn btn-primary btn-lg px-4 shadow-sm">
-        Connect With an Expert
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-
-<!-- Why Choose -->
-  <section class="container py-5 why-section">
-    <h6 class="text-uppercase text-primary text-center">Why Choose Experts</h6>
-    <h2 class="fw-bold text-center mb-5">Why Should You Hire Experts?</h2>
-
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card h-100 border-0 shadow-sm service-card">
-          <div class="card-body text-center">
-            <div class="service-icon mb-3">
-              <i class="bi bi-person-check-fill fs-1 text-primary"></i>
-            </div>
-            <h5 class="fw-bold">Personalized Solutions</h5>
-            <p class="text-muted">Receive tailored strategies that fit your specific goals, industry, and vision.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card h-100 border-0 shadow-sm service-card">
-          <div class="card-body text-center">
-            <div class="service-icon mb-3">
-              <i class="bi bi-people-fill fs-1 text-success"></i>
-            </div>
-            <h5 class="fw-bold">Networking Opportunity</h5>
-            <p class="text-muted">Connect with industry leaders, professionals, and investors to grow your network.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card h-100 border-0 shadow-sm service-card">
-          <div class="card-body text-center">
-            <div class="service-icon mb-3">
-              <i class="bi bi-lightbulb-fill fs-1 text-warning"></i>
-            </div>
-            <h5 class="fw-bold">Expert Consultation</h5>
-            <p class="text-muted">Gain deep insights and clarity from top domain experts in every session.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center mt-5">
-      <a href="./create-account" class="btn btn-lg btn-primary px-4">Explore All Services</a>
     </div>
   </section>
+  <!-- ═══════════════════════════ /HERO ═══════════════════════════ -->
 
-  <!-- Ending CTA -->
-  <div class="container-fluid py-5">
-    <div class="row align-items-center">
-      <section class="cta-section">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-between">
-            <div class="col-md-8">
-              <h4 class="cta-title">Need a consulting services?</h4>
-              <p class="cta-text mt-2">
-                Get instant access to verified experts across industries. Your consultation starts without delay, reliable, and tailored to your needs.
-              </p>
-            </div>
-            <div class="col-md-4 text-md-end mt-3 mt-md-0">
-              <a href="create-account"><button class="btn btn-register">Register</button></a>
-              <a href="contact"><button class="btn btn-register">Contact Us</button></a>
-            </div>
+
+  <!-- ═══════════════════════════ SOLUTIONS ═══════════════════════════ -->
+  <section class="section-dark py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <div class="mb-14">
+        <p class="text-accent text-xs uppercase tracking-widest font-semibold mb-3">Our Solutions</p>
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Expertise That Translates<br>
+          <span class="bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">Into Real Results</span>
+        </h2>
+        <p class="text-white/60 text-lg max-w-2xl">
+          ConsultME delivers expert-led solutions designed to help individuals, startups, and enterprises make better decisions and move faster.
+        </p>
+      </div>
+
+      <!-- Cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 hover:bg-white/8 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-cobalt/20 border border-cobalt/30 flex items-center justify-center mb-4">
+            <i class="bi bi-bullseye text-accent text-xl"></i>
           </div>
+          <h5 class="font-semibold text-white mb-2">Precision Guidance</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Tailored expert advice aligned with your goals, industry, and growth stage.</p>
         </div>
-      </section>
-    </div>
-  </div>
 
-  <!-- Footer -->
-  <footer style="padding: 40px 0; color: black; background-color:lavender;" role="contentinfo">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 mb-4">
-          <img src="./assets/img/logo.png" alt="ConsultMe Logo" style="height: 70px;">
-          <p class="mt-3" style="font-size: 14px;">
-            ConsultMe: Your partner in smart, AI-powered business consulting. Accelerate your growth with innovation-driven solutions.
-          </p>
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 hover:bg-white/8 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-cobalt/20 border border-cobalt/30 flex items-center justify-center mb-4">
+            <i class="bi bi-diagram-3 text-accent text-xl"></i>
+          </div>
+          <h5 class="font-semibold text-white mb-2">End-to-End Consulting</h5>
+          <p class="text-white/50 text-sm leading-relaxed">From strategy and planning to execution and optimization handled seamlessly.</p>
         </div>
-        <div class="col-md-3 mb-4">
-          <h5 style="color: #1dd186;">Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="./about" class="text-decoration-none">About Us</a></li>
-            <li><a href="./contact" class="text-decoration-none">Contact Us</a></li>
-            <li><a href="./services" class="text-decoration-none">Our Services</a></li>
-          </ul>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 hover:bg-white/8 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-cobalt/20 border border-cobalt/30 flex items-center justify-center mb-4">
+            <i class="bi bi-people text-accent text-xl"></i>
+          </div>
+          <h5 class="font-semibold text-white mb-2">Elite Expert Network</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Access a curated pool of verified professionals across 50+ domains.</p>
         </div>
-        <div class="col-md-3 mb-4">
-          <h5 style="color: #1dd186;">Get Involved</h5>
-          <ul class="list-unstyled">
-            <li><a href="csignup.php" class="text-decoration-none">Become a Freelancer</a></li>
-            <li><a href="clogin.php" class="text-decoration-none">Freelancer Login</a></li>
-            <li><a href="contact" class="text-decoration-none">Contact</a></li>
-          </ul>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 hover:bg-white/8 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-cobalt/20 border border-cobalt/30 flex items-center justify-center mb-4">
+            <i class="bi bi-graph-up-arrow text-accent text-xl"></i>
+          </div>
+          <h5 class="font-semibold text-white mb-2">Growth Roadmaps</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Clear, measurable plans for career acceleration and business scaling.</p>
         </div>
-        <div class="col-md-3 mb-4">
-          <h5 style="color: #1dd186;">Contact Us</h5>
-          <ul class="list-unstyled">
-            <li>
-                <address>
-                    <i class="bi bi-geo-alt-fill text-success me-2"></i> 2066 2nd Floor, Nazarbaug Palace 
-                    Mandvi, Near Mandvi Gate, Vadodara
-                    Gujarat, India 390001
-                </address>
-            </li>
-            <li><i class="bi bi-telephone-fill text-success me-2"></i> +91 8317818107</li>
-            <li><i class="bi bi-envelope-fill text-success me-2"></i> info@consultmee.in</li>
-          </ul>
+
+      </div>
+
+      <!-- Metrics -->
+      <div id="metrics" class="grid grid-cols-3 gap-6 text-center mb-14">
+        <div class="glass-card bg-white/5 border border-white/10 rounded-2xl py-8 px-4">
+          <div class="text-4xl font-black bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent counter mb-2" data-target="1200" data-suffix="+">0</div>
+          <p class="text-white/50 text-sm">Experts</p>
+        </div>
+        <div class="glass-card bg-white/5 border border-white/10 rounded-2xl py-8 px-4">
+          <div class="text-4xl font-black bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent counter mb-2" data-target="98" data-suffix="%">0</div>
+          <p class="text-white/50 text-sm">Satisfaction</p>
+        </div>
+        <div class="glass-card bg-white/5 border border-white/10 rounded-2xl py-8 px-4">
+          <div class="text-4xl font-black bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent counter mb-2" data-target="25" data-suffix="+">0</div>
+          <p class="text-white/50 text-sm">Industries</p>
         </div>
       </div>
-      <hr>
+
+      <!-- CTA -->
       <div class="text-center">
-        <small>&copy; <span style="color: #1dd186;">ConsultME</span>, All rights reserved.</small>
+        <a href="create-account" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30">
+          Speak With an Expert <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- ═══════════════════════════ /SOLUTIONS ═══════════════════════════ -->
+
+
+  <!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
+  <section class="section-mid py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <p class="text-accent text-xs uppercase tracking-widest font-semibold text-center mb-3">Our Services</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-center mb-14">Connect Clients &amp; Consultants</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center mb-5">
+            <i class="bi bi-calendar-check text-2xl text-blue-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-2">Appointment Booking</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Schedule meetings with verified consultants seamlessly through our easy appointment system.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center mb-5">
+            <i class="bi bi-kanban text-2xl text-emerald-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-2">Project / Task Posting</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Post your project requirements and receive proposals from expert consultants instantly.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/25 flex items-center justify-center mb-5">
+            <i class="bi bi-person-lines-fill text-2xl text-amber-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-2">Consultant Suggestions</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Get AI-driven recommendations to match you with the most suitable industry experts.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-rose-500/15 border border-rose-500/25 flex items-center justify-center mb-5">
+            <i class="bi bi-currency-rupee text-2xl text-rose-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-2">Affordable Pricing</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Transparent and budget-friendly pricing models suitable for startups, MSMEs, and enterprises.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center mb-5">
+            <i class="bi bi-lightning-charge text-2xl text-cyan-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-2">One-Click Booking</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Confirm and book your consultant instantly with a fast and hassle-free one-click process.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-violet-500/15 border border-violet-500/25 flex items-center justify-center mb-5">
+            <i class="bi bi-globe2 text-2xl text-violet-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-2">Multi Industry Expertise</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Access professionals across technology, legal, finance, healthcare, media, and more.</p>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="./create-account" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30">
+          Explore All Services <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- ═══════════════════════════ /SERVICES ═══════════════════════════ -->
+
+
+  <!-- ═══════════════════════════ PHILOSOPHY ═══════════════════════════ -->
+  <section class="section-dark py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <div class="mb-12">
+        <p class="text-accent text-xs uppercase tracking-widest font-semibold mb-3">Our Philosophy</p>
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Building Meaningful Connections<br>
+          <span class="bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">Between Vision &amp; Expertise</span>
+        </h2>
+        <p class="text-white/60 text-lg max-w-2xl">
+          At ConsultME, we believe access to the right expert at the right time can transform uncertainty into structured growth.
+        </p>
+      </div>
+
+      <!-- Core statement -->
+      <div class="mb-12">
+        <div class="reveal glass-card max-w-4xl bg-white/5 backdrop-blur-md border-l-4 border-cobalt border border-white/10 rounded-2xl p-8">
+          <p class="text-white/75 text-lg leading-relaxed">
+            We empower individuals, startups, and enterprises by connecting them with verified consultants who convert clarity into action — enabling confident decisions, faster execution, and measurable impact.
+          </p>
+        </div>
+      </div>
+
+      <!-- Principle cards -->
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 text-center hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-compass-fill text-2xl text-blue-400"></i>
+          </div>
+          <h5 class="font-semibold text-white mb-3">Clarity Before Complexity</h5>
+          <p class="text-white/50 text-sm leading-relaxed">We simplify complex challenges into structured insights, helping you move forward with focus and direction.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 text-center hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-person-badge-fill text-2xl text-emerald-400"></i>
+          </div>
+          <h5 class="font-semibold text-white mb-3">Experience-Led Guidance</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Our consultants bring real-world execution experience — not just theory — ensuring practical, results-driven advice.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 text-center hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-graph-up-arrow text-2xl text-amber-400"></i>
+          </div>
+          <h5 class="font-semibold text-white mb-3">Outcome-Focused Growth</h5>
+          <p class="text-white/50 text-sm leading-relaxed">We measure success through impact — scalable systems, stronger decisions, and sustainable long-term growth.</p>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="./create-account" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30">
+          Connect With an Expert <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- ═══════════════════════════ /PHILOSOPHY ═══════════════════════════ -->
+
+
+  <!-- ═══════════════════════════ WHY CHOOSE ═══════════════════════════ -->
+  <section class="section-mid py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <p class="text-accent text-xs uppercase tracking-widest font-semibold text-center mb-3">Why Choose Experts</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-center mb-14">Why Should You Hire Experts?</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 text-center hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-person-check-fill text-2xl text-blue-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-3">Personalized Solutions</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Receive tailored strategies that fit your specific goals, industry, and vision.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 text-center hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-people-fill text-2xl text-emerald-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-3">Networking Opportunity</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Connect with industry leaders, professionals, and investors to grow your network.</p>
+        </div>
+
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 text-center hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-lightbulb-fill text-2xl text-amber-400"></i>
+          </div>
+          <h5 class="font-bold text-white mb-3">Expert Consultation</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Gain deep insights and clarity from top domain experts in every session.</p>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="./create-account" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30">
+          Explore All Services <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- ═══════════════════════════ /WHY CHOOSE ═══════════════════════════ -->
+
+
+  <!-- ═══════════════════════════ CTA BANNER ═══════════════════════════ -->
+  <section class="py-16" style="background: linear-gradient(135deg, #0d1a3a 0%, #0a1628 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-card bg-white/5 backdrop-blur-xl border border-white/15 rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div>
+          <h4 class="text-2xl md:text-3xl font-black text-white mb-3">Need a consulting service?</h4>
+          <p class="text-white/60 text-base max-w-xl">Get instant access to verified experts across industries. Your consultation starts without delay — reliable, and tailored to your needs.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+          <a href="create-account" class="px-7 py-3.5 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-lg shadow-blue-500/30 text-center whitespace-nowrap">Register Now</a>
+          <a href="contact" class="px-7 py-3.5 rounded-full border border-white/25 text-white font-semibold hover:bg-white/10 transition-all text-center whitespace-nowrap">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══════════════════════════ /CTA BANNER ═══════════════════════════ -->
+
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer class="py-14" style="background: #060b17;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+
+        <!-- Brand -->
+        <div>
+          <img src="./assets/img/logo.png" alt="ConsultME Logo" class="h-11 w-auto mb-4">
+          <p class="text-white/50 text-sm leading-relaxed">ConsultME: Your partner in smart, AI-powered business consulting. Accelerate your growth with innovation-driven solutions.</p>
+        </div>
+
+        <!-- Quick links -->
+        <div>
+          <h5 class="text-emerald-400 font-semibold mb-4">Quick Links</h5>
+          <ul class="space-y-2">
+            <li><a href="./about" class="text-white/50 hover:text-white text-sm transition-colors">About Us</a></li>
+            <li><a href="./contact" class="text-white/50 hover:text-white text-sm transition-colors">Contact Us</a></li>
+            <li><a href="./services" class="text-white/50 hover:text-white text-sm transition-colors">Our Services</a></li>
+          </ul>
+        </div>
+
+        <!-- Get Involved -->
+        <div>
+          <h5 class="text-emerald-400 font-semibold mb-4">Get Involved</h5>
+          <ul class="space-y-2">
+            <li><a href="csignup.php" class="text-white/50 hover:text-white text-sm transition-colors">Become a Consultant</a></li>
+            <li><a href="clogin.php" class="text-white/50 hover:text-white text-sm transition-colors">Consultant Login</a></li>
+            <li><a href="contact" class="text-white/50 hover:text-white text-sm transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h5 class="text-emerald-400 font-semibold mb-4">Contact Us</h5>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2 text-white/50 text-sm">
+              <i class="bi bi-geo-alt-fill text-emerald-400 mt-0.5 flex-shrink-0"></i>
+              <span>2066 2nd Floor, Nazarbaug Palace Mandvi, Near Mandvi Gate, Vadodara, Gujarat, India 390001</span>
+            </li>
+            <li class="flex items-center gap-2 text-white/50 text-sm">
+              <i class="bi bi-telephone-fill text-emerald-400 flex-shrink-0"></i>
+              +91 8317818107
+            </li>
+            <li class="flex items-center gap-2 text-white/50 text-sm">
+              <i class="bi bi-envelope-fill text-emerald-400 flex-shrink-0"></i>
+              info@consultmee.in
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-6 text-center">
+        <small class="text-white/30 text-sm">&copy; <span class="text-emerald-400">ConsultME</span>, All rights reserved.</small>
       </div>
     </div>
   </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-
- <!-- No extra animation JS included -->
- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 800,
-    once: true,
-    easing: "ease-out-cubic"
-  });
-</script>
-<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-
-<script>
-  const canvas = document.getElementById("hero3d");
-
-  /* Scene */
-  const scene = new THREE.Scene();
-
-  /* Camera – hero framing */
-  const camera = new THREE.PerspectiveCamera(
-    60,
-    canvas.clientWidth / canvas.clientHeight,
-    0.1,
-    1000
-  );
-  camera.position.set(0, 0, 5);
-
-  /* Renderer – fully transparent */
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    alpha: true,
-    antialias: true
-  });
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setClearColor(0x000000, 0);
-
-  /* Light (subtle, clean) */
-  const light = new THREE.DirectionalLight(0x2563eb, 1.2);
-  light.position.set(5, 5, 5);
-  scene.add(light);
-
-  /* HERO OBJECT — WIREFRAME (NO SOLID BODY) */
-  const geometry = new THREE.IcosahedronGeometry(1.9, 1);
-  const material = new THREE.MeshBasicMaterial({
-    color: 0x2563eb,
-    wireframe: true
-  });
-
-  const heroObject = new THREE.Mesh(geometry, material);
-  scene.add(heroObject);
-
-  /* Animation */
-  function animate() {
-    requestAnimationFrame(animate);
-    heroObject.rotation.y += 0.0015;
-    heroObject.rotation.x += 0.0006;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  /* Responsive resize */
-  window.addEventListener("resize", () => {
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
-    renderer.setSize(w, h);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  });
-</script>
-<!--Scroll Pop Up Logic-->
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-
-    const elements = document.querySelectorAll(
-      '.services-section .service-card,' +
-      '.solutions-section .solution-card,' +
-      '.philosophy-core,' +
-      '.philosophy-card,' +
-      '.why-section .service-card,' +
-      '.cta-section,' +
-      '.footer-section'
-    );
+  <!-- ═══════════════════════════ /FOOTER ═══════════════════════════ -->
 
 
-    elements.forEach(el => el.classList.add('reveal'));
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, easing: "ease-out-cubic" });
+  </script>
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-          } else {
-            entry.target.classList.remove('show');
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: '0px 0px -80px 0px'
-      }
-    );
-
-    elements.forEach(el => observer.observe(el));
-  });
-</script>
-
-<!--Metrics Count in Solutions Section-->
-<script>
-  const counters = document.querySelectorAll(".counter");
-  const metricsSection = document.querySelector("#metrics");
-
-  let started = false;
-
-  function startCounting() {
-    counters.forEach(counter => {
-      const target = +counter.getAttribute("data-target");
-      const suffix = counter.getAttribute("data-suffix") || "";
-      const duration = 2000; // 2 seconds
-      const startTime = performance.now();
-
-      function updateCount(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        const value = Math.floor(progress * target);
-        counter.innerText = value + suffix;
-
-        if (progress < 1) {
-          requestAnimationFrame(updateCount);
-        } else {
-          counter.innerText = target + suffix;
-        }
-      }
-
-      requestAnimationFrame(updateCount);
+  <!-- Three.js 3D hero object -->
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  <script>
+    const canvas = document.getElementById("hero3d");
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    camera.position.set(0, 0, 5);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x000000, 0);
+    const light = new THREE.DirectionalLight(0x2563eb, 1.2);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+    const geometry = new THREE.IcosahedronGeometry(1.9, 1);
+    const material = new THREE.MeshBasicMaterial({ color: 0x2563eb, wireframe: true });
+    const heroObject = new THREE.Mesh(geometry, material);
+    scene.add(heroObject);
+    function animate() {
+      requestAnimationFrame(animate);
+      heroObject.rotation.y += 0.0015;
+      heroObject.rotation.x += 0.0006;
+      renderer.render(scene, camera);
+    }
+    animate();
+    window.addEventListener("resize", () => {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
     });
-  }
+  </script>
 
-  const observer = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !started) {
-      started = true;
-      startCounting();
+  <!-- Scroll reveal -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('show');
+          else entry.target.classList.remove('show');
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+      elements.forEach(el => observer.observe(el));
+    });
+  </script>
+
+  <!-- Counter animation -->
+  <script>
+    const counters = document.querySelectorAll(".counter");
+    const metricsSection = document.querySelector("#metrics");
+    let started = false;
+    function startCounting() {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute("data-target");
+        const suffix = counter.getAttribute("data-suffix") || "";
+        const duration = 2000;
+        const startTime = performance.now();
+        function updateCount(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          counter.innerText = Math.floor(progress * target) + suffix;
+          if (progress < 1) requestAnimationFrame(updateCount);
+          else counter.innerText = target + suffix;
+        }
+        requestAnimationFrame(updateCount);
+      });
     }
-  }, { threshold: 0.4 });
+    const metricObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !started) { started = true; startCounting(); }
+    }, { threshold: 0.4 });
+    metricObserver.observe(metricsSection);
+  </script>
 
-  observer.observe(metricsSection);
-</script>
-<script>
-  window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
+  <!-- Navbar scroll effect + mobile menu -->
+  <script>
+    const navbar = document.getElementById("navbar");
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
 
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
-</script>
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) navbar.classList.add("navbar-scrolled");
+      else navbar.classList.remove("navbar-scrolled");
+    });
 
-
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      menuIcon.className = mobileMenu.classList.contains("hidden") ? "bi bi-list text-2xl" : "bi bi-x text-2xl";
+    });
+  </script>
 
 </body>
 </html>

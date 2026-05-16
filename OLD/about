@@ -7,327 +7,335 @@
   <meta name="description" content="Learn more about ConsultME – India's top consultancy, mentorship, and advisory platform serving multiple industries with expert guidance." />
   <meta name="author" content="ConsultME" />
   <meta name="keywords" content="consultancy services, mentorship platform, advisory services, business consultants, AI consulting, finance advisory, legal compliance experts, healthcare consultants, media consultants, startup mentorship, professional advisory India" />
-  <meta name="keywords" content="consultancy services, business consultancy, legal consultancy, financial consultancy, AI consultancy, healthcare consultancy, media consultancy, career consultancy, startup mentorship, professional advisory, business advisors, management consulting, growth consulting, strategic consulting, project management consulting, digital transformation consultants, business process reengineering, leadership coaching, corporate training, business mentoring, personal growth mentoring, legal advisors, compliance consulting, business compliance experts, startup legal help, company formation consultancy, taxation advisory, audit consultants, risk management experts, intellectual property consultants, trademark registration consultants, contract law experts, HR consultants, organizational restructuring, HR policy advisory, workplace productivity consulting, executive coaching, team building mentors, communication consultants, negotiation coaching, conflict resolution consulting, financial planners, investment advisors, wealth management consultants, taxation consultants, accounting experts, chartered accountants, business finance consultancy,budget management, financial forecasting, startup funding advisors, venture capital consulting, investor relations consultancy, fundraising strategy experts, AI integration consultants, automation experts, machine learning consultants, data analytics consultants, cloud transformation consulting, data science advisors, predictive modeling experts, process automation specialists, generative AI consultants, digital innovation advisory, business intelligence experts, software project consultants, IT infrastructure advisory, ERP implementation consultants, CRM consultants, software architecture advisors, cybersecurity consultants, network infrastructure experts, cloud migration specialists, digital strategy consulting, web development advisory, mobile app consultants, UI UX design mentors, media consulting, digital marketing consultants, branding advisory, PR strategy consultants, content marketing experts, SEO consultants, PPC campaign managers, social media strategy experts, influencer marketing consultants, brand identity creators, corporate communication advisors, video production consultants, film industry mentors, entertainment business consulting, event management advisors, public relations consultants, talent management experts, creative direction consultants, healthcare consultants, medical advisory, hospital management consultants, wellness experts, nutrition consultants, physiotherapy advisory, telemedicine consultants, fitness trainers, mental health consultants, occupational therapy advisors, clinical research consultants, pharmaceutical business consultants, biotechnology advisors, healthcare innovation consulting, patient experience consultants, healthcare compliance experts, insurance advisory, telehealth platform consultants, career counseling, professional growth mentors, resume consultants, job placement advisors, HR career strategists, soft skills mentors, life coaches, psychometric testing experts, executive recruiters, interview preparation mentors, job satisfaction advisors, employee engagement consultants, entrepreneurship mentors, startup founders network, business incubation consultants, accelerator program advisors, startup registration consultants, pitch deck creation mentors, investor readiness consultants, product development advisory, market research consultants, business validation experts, go-to-market strategists, sales optimization consultants, revenue model analysts, customer experience advisors, CRM optimization experts, business automation consultants, lean management experts, six sigma consultants, operational efficiency advisors, cost reduction consultants, performance improvement advisors, supply chain consultants, logistics experts, procurement consultants, vendor management advisors, quality assurance consultants, production optimization experts, sustainability consultants, ESG advisors, environmental consultants, green energy advisors, CSR consultants, carbon footprint analysts, renewable energy advisors, policy consultants, government project advisors, NGO consultants, development sector experts, education consultants, academic advisors, e-learning consultants, training and development consultants, coaching institutes, skill development trainers, educational policy advisors, corporate learning strategists, human resource development mentors, campus placement consultants, internship program advisors, online course creators, ed-tech consultants, marketing consultants, brand strategy consultants, performance marketing experts, digital campaign strategists, customer acquisition consultants, conversion optimization experts, marketing automation advisors, data-driven marketing consultants, retail marketing advisors, omnichannel strategy consultants, franchise consultants, business expansion advisors, product marketing strategists, category management experts, pricing strategy consultants, real estate consultants, property advisors, construction consultants, architecture advisory, interior design consultants, landscape design advisors, urban development consultants, smart city consultants, civil engineering advisors, infrastructure project consultants, facility management advisors, transportation consultants, logistics management experts, aviation business consultants, maritime consultants, tourism advisors, travel management consultants, hospitality consultants, hotel operations advisors, food and beverage consultants, restaurant management advisors, catering consultants, technology consultants, IT business advisory, SaaS consultants, product design mentors, tech startup consultants, innovation management advisors, cloud computing experts, DevOps consultants, cybersecurity risk advisors, blockchain consultants, fintech experts, payment system advisors, insurance tech consultants, regtech advisors, IoT consultants, robotics consultants, automation engineers, AI ethics advisors, data governance consultants, digital twin consultants, software QA experts, testing consultants, product lifecycle management advisors, customer success consultants, client relationship managers, business analyst consultants, change management advisors, transformation leaders, organizational development experts, strategy execution consultants, vision and mission advisors, policy formulation consultants, public administration advisors, diplomatic strategy consultants, global trade advisors, export-import consultants, supply chain finance experts, operations research consultants, quantitative analysts, project financing consultants, infrastructure investment advisors, portfolio management consultants, derivatives advisors, treasury management experts, forex consultants, capital market advisors, business continuity consultants, disaster recovery experts,compliance auditors, quality system consultants, ISO certification consultants, internal audit experts, enterprise governance advisors, risk assessment consultants, information security consultants, data privacy experts, GDPR consultants, ITIL advisors, DevSecOps experts, system architects, CIO advisory, CTO consultancy,CXO mentorship programs, leadership development consultants, board advisory, strategic management consultants, merger and acquisition advisors, corporate finance consultants, restructuring experts, turnaround management consultants, business valuation experts, equity analysts, stakeholder engagement consultants, sustainability reporting advisors, integrated management consultants, operational strategy advisors, customer retention consultants, loyalty program advisors, branding growth strategists, PR specialists, social impact consultants, market entry strategy consultants, product launch advisors, innovation consultants, ideation mentors, strategic partnerships consultants, cross-functional collaboration consultants, remote work advisors, hybrid team consultants, corporate culture advisors, diversity inclusion consultants, talent development experts, succession planning consultants, payroll advisors, HR tech consultants, recruitment process outsourcing experts, employee training consultants, communication strategy advisors, reputation management consultants, data visualization consultants, analytics strategy advisors, machine learning deployment consultants, AI ethics specialists, robotic process automation experts, big data consultants, natural language processing consultants, business intelligence strategy consultants, predictive analytics advisors, and consultancy firm experts.
-        ">
-        <link rel="icon" type="image/x-icon" href="/assets/img/logox.ico">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0d6efd',
+            cobalt: '#2563eb',
+            accent: '#0ea5e9',
+            navy: '#0f172a',
+            muted: '#64748b',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="./CSS/main.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.ico">
 
-  <!-- Non-destructive visual enhancement (add-on) -->
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    body { background: #0a0f1e; }
+    .glass-card { position: relative; overflow: hidden; }
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at 30% 0%, rgba(37,99,235,0.15), transparent 70%);
+      pointer-events: none;
+    }
+    .navbar-scrolled { background: rgba(10,15,30,0.95) !important; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    #mobile-menu { background: rgba(10,15,30,0.97); backdrop-filter: blur(20px); }
+  </style>
 </head>
 
-<body>
+<body class="text-white">
 
-    <!-- Navigation bar start -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-    
-        <!-- Logo -->
-        <a class="navbar-brand" href="https://consultmee.in">
-          <img src="./assets/img/logo.png" alt="Logo" class="navbar-logo">
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <a href="https://consultmee.in" class="flex items-center gap-2 flex-shrink-0">
+          <img src="./assets/img/logo.png" alt="ConsultME" class="h-9 lg:h-11 w-auto">
         </a>
-    
-        <!-- Mobile Toggle -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="https://consultmee.in" class="text-white/70 font-medium hover:text-white transition-colors">Home</a>
+          <a href="./services" class="text-white/70 font-medium hover:text-white transition-colors">Services</a>
+          <a href="./about" class="text-white font-medium hover:text-accent transition-colors">About Us</a>
+          <a href="./contact" class="text-white/70 font-medium hover:text-white transition-colors">Contact</a>
+        </div>
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="create-account" class="px-5 py-2 rounded-full border border-white/30 text-white font-medium text-sm hover:bg-white/10 transition-all">Sign Up</a>
+          <a href="login-account" class="px-5 py-2 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-medium text-sm hover:-translate-y-0.5 transition-all shadow-lg shadow-blue-500/25">Login</a>
+        </div>
+        <button id="menu-toggle" class="lg:hidden p-2 rounded-lg text-white/80 hover:text-white">
+          <i class="bi bi-list text-2xl" id="menu-icon"></i>
         </button>
-    
-        <!-- Collapsible Content -->
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    
-          <!-- Nav links (right after logo) -->
-          <div class="navbar-nav text-center">
-            <a class="nav-link" href="https://consultmee.in">Home</a>
-            <a class="nav-link" href="./services">Services</a>
-            <a class="nav-link active" aria-current="page" href="./about">About us</a>
-            <a class="nav-link" href="./contact">Contact us</a>
-          </div>
-    
-          <!-- Auth Buttons (right aligned) -->
-          <div class="d-flex gap-2 justify-content-center ms-lg-auto mt-lg-0 mt-3">
-            <a href="create-account" class="btn btn-outline-primary">Signup</a>
-            <a href="login-account" class="btn btn-outline-dark">Login</a>
-          </div>
-    
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10">
+      <div class="px-4 py-4 flex flex-col gap-3">
+        <a href="https://consultmee.in" class="text-white/70 font-medium py-2">Home</a>
+        <a href="./services" class="text-white/70 font-medium py-2">Services</a>
+        <a href="./about" class="text-white font-medium py-2">About Us</a>
+        <a href="./contact" class="text-white/70 font-medium py-2">Contact</a>
+        <div class="flex gap-3 pt-2 border-t border-white/10">
+          <a href="create-account" class="flex-1 text-center px-4 py-2 rounded-full border border-white/30 text-white text-sm">Sign Up</a>
+          <a href="login-account" class="flex-1 text-center px-4 py-2 rounded-full bg-gradient-to-r from-cobalt to-accent text-white text-sm">Login</a>
         </div>
       </div>
-    </nav>
-    <!-- Navigation bar end -->
+    </div>
+  </nav>
 
-  <!-- Hero Section Structure -->
-    <section class="py-5">
-      <div class="container">
-        <div class="row align-items-center g-5">
-    
-          <!-- LEFT CONTENT -->
-          <div class="col-lg-6">
-    
-            <h1 class="fw-bold display-5 mb-4">
-              Connect With Verified Experts
-              For Smarter Business Decisions
-            </h1>
-    
-            <p class="text-muted mb-4 fs-5">
-              ConsultME is India’s smart consultation marketplace helping
-              individuals, startups, and enterprises book experts,
-              post projects, and grow faster with professional guidance.
-            </p>
-    
-            <!-- CTA Buttons -->
-            <div class="d-flex flex-wrap gap-3 mb-4">
-              <a href="./services" class="btn btn-primary btn-lg px-4">
-                Explore Services
-              </a>
-    
-              <a href="./create-account" class="btn btn-outline-primary btn-lg px-4">
-                Get Free Consultation
-              </a>
-            </div>
-    
-            <!-- Feature Tags -->
-            <div class="d-flex flex-wrap gap-3">
-              <span class="badge bg-light text-dark px-3 py-2 border">
-                Appointment Booking
-              </span>
-    
-              <span class="badge bg-light text-dark px-3 py-2 border">
-                AI Consultant Suggestions
-              </span>
-    
-              <span class="badge bg-light text-dark px-3 py-2 border">
-                Multi-Industry Experts
-              </span>
-            </div>
-    
+  <!-- HERO -->
+  <section class="pt-32 pb-20" style="background: linear-gradient(135deg, #0a0f1e 0%, #0d1a3a 60%, #0a1628 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Left -->
+        <div>
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cobalt/20 border border-cobalt/30 text-accent text-sm font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+            About ConsultME
+          </span>
+          <h1 class="text-4xl sm:text-5xl font-black leading-tight mb-6">
+            Connect With Verified Experts<br>
+            <span class="bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">For Smarter Decisions</span>
+          </h1>
+          <p class="text-white/60 text-lg mb-8 leading-relaxed">
+            ConsultME is India's smart consultation marketplace helping individuals, startups, and enterprises book experts, post projects, and grow faster with professional guidance.
+          </p>
+          <div class="flex flex-wrap gap-4 mb-8">
+            <a href="./services" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30">
+              Explore Services <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="./create-account" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold hover:bg-white/15 transition-all">
+              Get Free Consultation
+            </a>
           </div>
-    
-          <!-- RIGHT CONTACT CARD -->
-          <div class="col-lg-6">
-    
-            <div class="card border-0 shadow-lg rounded-4 p-4">
-    
-              <h4 class="fw-bold mb-3">Quick Contact</h4>
-              <p class="text-muted mb-4">
-                Connect with our platform team today.
-              </p>
-    
-              <!-- Email -->
-              <div class="d-flex align-items-center mb-3">
-                <i class="bi bi-envelope-fill fs-4 text-primary me-3"></i>
-                <span>support@consultme.in</span>
-              </div>
-    
-              <!-- Phone -->
-              <div class="d-flex align-items-center mb-4">
-                <i class="bi bi-telephone-fill fs-4 text-success me-3"></i>
-                <a href="tel:918317818107" style="text-decoration-line:none;">
-                    <span>+91 8317818107</span>
-                </a>
-              </div>
-    
-              <!-- Button -->
-              <a href="./contact" class="btn btn-dark w-100 py-3">
-                Contact Now
-              </a>
-    
-            </div>
-    
+          <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-1.5 rounded-full bg-white/8 border border-white/15 text-white/70 text-sm">Appointment Booking</span>
+            <span class="px-4 py-1.5 rounded-full bg-white/8 border border-white/15 text-white/70 text-sm">AI Consultant Suggestions</span>
+            <span class="px-4 py-1.5 rounded-full bg-white/8 border border-white/15 text-white/70 text-sm">Multi-Industry Experts</span>
           </div>
-    
         </div>
+
+        <!-- Right: Quick Contact card -->
+        <div>
+          <div class="glass-card bg-white/8 backdrop-blur-xl border border-white/15 rounded-3xl p-8 shadow-2xl">
+            <h4 class="text-xl font-bold mb-2">Quick Contact</h4>
+            <p class="text-white/50 mb-7 text-sm">Connect with our platform team today.</p>
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-11 h-11 rounded-xl bg-cobalt/20 border border-cobalt/30 flex items-center justify-center flex-shrink-0">
+                <i class="bi bi-envelope-fill text-accent"></i>
+              </div>
+              <span class="text-white/80">support@consultme.in</span>
+            </div>
+            <div class="flex items-center gap-4 mb-8">
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center flex-shrink-0">
+                <i class="bi bi-telephone-fill text-emerald-400"></i>
+              </div>
+              <a href="tel:918317818107" class="text-white/80 hover:text-white transition-colors">+91 8317818107</a>
+            </div>
+            <a href="./contact" class="block w-full text-center px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-lg shadow-blue-500/30">
+              Contact Now
+            </a>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-  <!-- Mission & Vision -->
-  <section class="py-5">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-4 text-primary">Our Mission & Vision</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="p-4 bg-light rounded shadow-sm h-100">
-            <i class="bi bi-bullseye text-primary fs-1" aria-hidden="true"></i>
-            <h5 class="mt-3 fw-semibold">Our Mission</h5>
-            <p class="text-muted">To simplify access to expert consultancy and mentorship for everyone - empowering individuals and businesses to make informed, strategic, and confident decisions.</p>
+  <!-- MISSION & VISION -->
+  <section class="py-20" style="background: #080d1c;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-accent text-xs uppercase tracking-widest font-semibold mb-3">Who We Are</p>
+      <h2 class="text-3xl sm:text-4xl font-black mb-14">
+        Our <span class="bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">Mission &amp; Vision</span>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-left hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center mb-5">
+            <i class="bi bi-bullseye text-2xl text-blue-400"></i>
           </div>
+          <h5 class="text-xl font-bold mb-3">Our Mission</h5>
+          <p class="text-white/55 leading-relaxed">To simplify access to expert consultancy and mentorship for everyone — empowering individuals and businesses to make informed, strategic, and confident decisions.</p>
         </div>
-        <div class="col-md-6">
-          <div class="p-4 bg-light rounded shadow-sm h-100">
-            <i class="bi bi-eye text-success fs-1" aria-hidden="true"></i>
-            <h5 class="mt-3 fw-semibold">Our Vision</h5>
-            <p class="text-muted">To be India’s most trusted platform for professional consultancy and mentorship, connecting industries with the right knowledge and expertise to accelerate growth.</p>
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-left hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center mb-5">
+            <i class="bi bi-eye text-2xl text-emerald-400"></i>
           </div>
+          <h5 class="text-xl font-bold mb-3">Our Vision</h5>
+          <p class="text-white/55 leading-relaxed">To be India's most trusted platform for professional consultancy and mentorship, connecting industries with the right knowledge and expertise to accelerate growth.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What We Do -->
-  <section class="py-5">
-    <div class="container text-center">
-      <h2 class="fw-bold text-primary mb-4">What We Do</h2>
-      <p class="text-muted mb-5">
-        ConsultME offers expert-led solutions across multiple domains to help individuals and organizations grow strategically and sustainably.
-      </p>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100 service-card">
-            <div class="card-body">
-              <i class="bi bi-briefcase-fill fs-1 text-primary mb-3" aria-hidden="true"></i>
-              <h5>Business Consulting</h5>
-              <p class="text-muted">Strategic guidance to help your business scale efficiently and achieve measurable results.</p>
-            </div>
+  <!-- WHAT WE DO -->
+  <section class="py-20" style="background: #0d1530;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-accent text-xs uppercase tracking-widest font-semibold mb-3">Our Expertise</p>
+      <h2 class="text-3xl sm:text-4xl font-black mb-4">
+        What <span class="bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">We Do</span>
+      </h2>
+      <p class="text-white/55 text-lg mb-14 max-w-2xl mx-auto">ConsultME offers expert-led solutions across multiple domains to help individuals and organizations grow strategically and sustainably.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-briefcase-fill text-2xl text-blue-400"></i>
           </div>
+          <h5 class="font-bold mb-2">Business Consulting</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Strategic guidance to help your business scale efficiently and achieve measurable results.</p>
         </div>
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100 service-card">
-            <div class="card-body">
-              <i class="bi bi-cpu fs-1 text-danger mb-3" aria-hidden="true"></i>
-              <h5>AI & Technology Consulting</h5>
-              <p class="text-muted">Unlock digital transformation with AI integration, data analytics, and automation solutions.</p>
-            </div>
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-rose-500/15 border border-rose-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-cpu text-2xl text-rose-400"></i>
           </div>
+          <h5 class="font-bold mb-2">AI &amp; Technology Consulting</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Unlock digital transformation with AI integration, data analytics, and automation solutions.</p>
         </div>
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100 service-card">
-            <div class="card-body">
-              <i class="bi bi-cash-coin fs-1 text-warning mb-3" aria-hidden="true"></i>
-              <h5>Finance & Legal Advisory</h5>
-              <p class="text-muted">Comprehensive support for financial planning, compliance, and investment strategies.</p>
-            </div>
+        <div class="glass-card reveal bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-7 hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/25 flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-cash-coin text-2xl text-amber-400"></i>
           </div>
+          <h5 class="font-bold mb-2">Finance &amp; Legal Advisory</h5>
+          <p class="text-white/50 text-sm leading-relaxed">Comprehensive support for financial planning, compliance, and investment strategies.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Industries We Serve -->
-  <section class="py-5">
-    <div class="container text-center">
-      <h2 class="fw-bold text-primary mb-4">Industries We Serve</h2>
-      <p class="text-muted mb-5">We provide expert consulting services across diverse industries and professional sectors.</p>
-      <div class="row g-4">
-        <div class="col-md-3 col-6"><div class="p-4 bg-white shadow-sm rounded h-100"><i class="bi bi-graph-up-arrow fs-2 text-primary" aria-hidden="true"></i><p class="mt-2 mb-0 fw-semibold">Business & Startups</p></div></div>
-        <div class="col-md-3 col-6"><div class="p-4 bg-white shadow-sm rounded h-100"><i class="bi bi-bank fs-2 text-success" aria-hidden="true"></i><p class="mt-2 mb-0 fw-semibold">Finance & Banking</p></div></div>
-        <div class="col-md-3 col-6"><div class="p-4 bg-white shadow-sm rounded h-100"><i class="bi bi-cpu fs-2 text-danger" aria-hidden="true"></i><p class="mt-2 mb-0 fw-semibold">Technology & AI</p></div></div>
-        <div class="col-md-3 col-6"><div class="p-4 bg-white shadow-sm rounded h-100"><i class="bi bi-camera-video fs-2 text-info" aria-hidden="true"></i><p class="mt-2 mb-0 fw-semibold">Media & Marketing</p></div></div>
-        <div class="col-md-3 col-6"><div class="p-4 bg-white shadow-sm rounded h-100"><i class="bi bi-heart-pulse fs-2 text-pink" aria-hidden="true"></i><p class="mt-2 mb-0 fw-semibold">Healthcare</p></div></div>
-        <div class="col-md-3 col-6"><div class="p-4 bg-white shadow-sm rounded h-100"><i class="bi bi-book fs-2 text-warning" aria-hidden="true"></i><p class="mt-2 mb-0 fw-semibold">Education & Training</p></div></div>
-        <div class="col-md-3 col-6"><div class="p-4 bg-white shadow-sm rounded h-100"><i class="bi bi-building fs-2 text-primary" aria-hidden="true"></i><p class="mt-2 mb-0 fw-semibold">Corporate & Legal</p></div></div>
-        <div class="col-md-3 col-6"><div class="p-4 bg-white shadow-sm rounded h-100"><i class="bi bi-globe2 fs-2 text-success" aria-hidden="true"></i><p class="mt-2 mb-0 fw-semibold">Government & NGOs</p></div></div>
+  <!-- INDUSTRIES -->
+  <section class="py-20" style="background: #080d1c;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-accent text-xs uppercase tracking-widest font-semibold mb-3">Sectors</p>
+      <h2 class="text-3xl sm:text-4xl font-black mb-4">
+        Industries <span class="bg-gradient-to-r from-cobalt to-accent bg-clip-text text-transparent">We Serve</span>
+      </h2>
+      <p class="text-white/55 text-lg mb-14 max-w-2xl mx-auto">We provide expert consulting services across diverse industries and professional sectors.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="reveal glass-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300">
+          <i class="bi bi-graph-up-arrow text-3xl text-blue-400 mb-3 block"></i>
+          <p class="font-semibold text-sm">Business &amp; Startups</p>
+        </div>
+        <div class="reveal glass-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300">
+          <i class="bi bi-bank text-3xl text-emerald-400 mb-3 block"></i>
+          <p class="font-semibold text-sm">Finance &amp; Banking</p>
+        </div>
+        <div class="reveal glass-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300">
+          <i class="bi bi-cpu text-3xl text-rose-400 mb-3 block"></i>
+          <p class="font-semibold text-sm">Technology &amp; AI</p>
+        </div>
+        <div class="reveal glass-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300">
+          <i class="bi bi-camera-video text-3xl text-cyan-400 mb-3 block"></i>
+          <p class="font-semibold text-sm">Media &amp; Marketing</p>
+        </div>
+        <div class="reveal glass-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300">
+          <i class="bi bi-heart-pulse text-3xl text-pink-400 mb-3 block"></i>
+          <p class="font-semibold text-sm">Healthcare</p>
+        </div>
+        <div class="reveal glass-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300">
+          <i class="bi bi-book text-3xl text-amber-400 mb-3 block"></i>
+          <p class="font-semibold text-sm">Education &amp; Training</p>
+        </div>
+        <div class="reveal glass-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300">
+          <i class="bi bi-building text-3xl text-violet-400 mb-3 block"></i>
+          <p class="font-semibold text-sm">Corporate &amp; Legal</p>
+        </div>
+        <div class="reveal glass-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300">
+          <i class="bi bi-globe2 text-3xl text-emerald-400 mb-3 block"></i>
+          <p class="font-semibold text-sm">Government &amp; NGOs</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta-section text-center" aria-labelledby="cta-title">
-    <div class="container">
-      <h4 id="cta-title" class="cta-title mb-3">Ready to Collaborate with Industry Experts?</h4>
-      <p class="cta-text mb-4">Join the ConsultME network and get access to top consultants and mentors across industries.</p>
-      <a href="signup.php" class="btn btn-register" aria-label="Get Started">Get Started</a>
+  <section class="py-16" style="background: linear-gradient(135deg, #0d1a3a 0%, #0a1628 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-card bg-white/5 backdrop-blur-xl border border-white/15 rounded-3xl p-10 md:p-14 text-center">
+        <h4 class="text-2xl md:text-3xl font-black mb-4">Ready to Collaborate with Industry Experts?</h4>
+        <p class="text-white/60 mb-8 max-w-xl mx-auto">Join the ConsultME network and get access to top consultants and mentors across industries.</p>
+        <a href="signup.php" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30">
+          Get Started <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer style="padding: 40px 0; color: black; background-color:lavender;" role="contentinfo">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 mb-4">
-          <img src="./assets/img/logo.png" alt="ConsultMe Logo" style="height: 70px;">
-          <p class="mt-3" style="font-size: 14px;">
-            ConsultMe: Your partner in smart, AI-powered business consulting. Accelerate your growth with innovation-driven solutions.
-          </p>
+  <!-- FOOTER -->
+  <footer class="py-14" style="background: #060b17;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+        <div>
+          <img src="./assets/img/logo.png" alt="ConsultME Logo" class="h-11 w-auto mb-4">
+          <p class="text-white/50 text-sm leading-relaxed">ConsultME: Your partner in smart, AI-powered business consulting. Accelerate your growth with innovation-driven solutions.</p>
         </div>
-        <div class="col-md-3 mb-4">
-          <h5 style="color: #1dd186;">Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="./about" class="text-decoration-none">About Us</a></li>
-            <li><a href="./contact" class="text-decoration-none">Contact Us</a></li>
-            <li><a href="./services" class="text-decoration-none">Our Services</a></li>
+        <div>
+          <h5 class="text-emerald-400 font-semibold mb-4">Quick Links</h5>
+          <ul class="space-y-2">
+            <li><a href="./about" class="text-white/50 hover:text-white text-sm transition-colors">About Us</a></li>
+            <li><a href="./contact" class="text-white/50 hover:text-white text-sm transition-colors">Contact Us</a></li>
+            <li><a href="./services" class="text-white/50 hover:text-white text-sm transition-colors">Our Services</a></li>
           </ul>
         </div>
-        <div class="col-md-3 mb-4">
-          <h5 style="color: #1dd186;">Get Involved</h5>
-          <ul class="list-unstyled">
-            <li><a href="csignup.php" class="text-decoration-none">Become a Freelancer</a></li>
-            <li><a href="clogin.php" class="text-decoration-none">Freelancer Login</a></li>
-            <li><a href="contact" class="text-decoration-none">Contact</a></li>
+        <div>
+          <h5 class="text-emerald-400 font-semibold mb-4">Get Involved</h5>
+          <ul class="space-y-2">
+            <li><a href="csignup.php" class="text-white/50 hover:text-white text-sm transition-colors">Become a Consultant</a></li>
+            <li><a href="clogin.php" class="text-white/50 hover:text-white text-sm transition-colors">Consultant Login</a></li>
+            <li><a href="contact" class="text-white/50 hover:text-white text-sm transition-colors">Contact</a></li>
           </ul>
         </div>
-        <div class="col-md-3 mb-4">
-          <h5 style="color: #1dd186;">Contact Us</h5>
-          <ul class="list-unstyled">
-            <li>
-                <address>
-                    <i class="bi bi-geo-alt-fill text-success me-2"></i> 2066 2nd Floor, Nazarbaug Palace 
-                    Mandvi, Near Mandvi Gate, Vadodara
-                    Gujarat, India 390001
-                </address>
+        <div>
+          <h5 class="text-emerald-400 font-semibold mb-4">Contact Us</h5>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2 text-white/50 text-sm">
+              <i class="bi bi-geo-alt-fill text-emerald-400 mt-0.5 flex-shrink-0"></i>
+              <span>2066 2nd Floor, Nazarbaug Palace Mandvi, Near Mandvi Gate, Vadodara, Gujarat, India 390001</span>
             </li>
-            <li><i class="bi bi-telephone-fill text-success me-2"></i> +91 8317818107</li>
-            <li><i class="bi bi-envelope-fill text-success me-2"></i> info@consultmee.in</li>
+            <li class="flex items-center gap-2 text-white/50 text-sm">
+              <i class="bi bi-telephone-fill text-emerald-400 flex-shrink-0"></i>+91 8317818107
+            </li>
+            <li class="flex items-center gap-2 text-white/50 text-sm">
+              <i class="bi bi-envelope-fill text-emerald-400 flex-shrink-0"></i>info@consultmee.in
+            </li>
           </ul>
         </div>
       </div>
-      <hr>
-      <div class="text-center">
-        <small>&copy; <span style="color: #1dd186;">ConsultME</span>, All rights reserved.</small>
+      <div class="border-t border-white/10 pt-6 text-center">
+        <small class="text-white/30 text-sm">&copy; <span class="text-emerald-400">ConsultME</span>, All rights reserved.</small>
       </div>
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="" crossorigin="anonymous"></script>
-
-  <!-- Intersection observer for reveal (keeps original behavior) -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const elements = document.querySelectorAll(".animate");
-      const isMobile = window.innerWidth < 768;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("visible");
-          });
-        },
-        { threshold: isMobile ? 0.05 : 0.15 }
-      );
-
-      elements.forEach((el) => observer.observe(el));
+    const navbar = document.getElementById("navbar");
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) navbar.classList.add("navbar-scrolled");
+      else navbar.classList.remove("navbar-scrolled");
+    });
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      menuIcon.className = mobileMenu.classList.contains("hidden") ? "bi bi-list text-2xl" : "bi bi-x text-2xl";
+    });
+    window.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('show');
+          else entry.target.classList.remove('show');
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      elements.forEach(el => observer.observe(el));
     });
   </script>
-  
-<!--Scroll Pop Up Logic-->
-<script>
-  const revealElements = document.querySelectorAll(
-    '.hero-left h4, .hero-left h1, .hero-desc, .hero-cta, ' +
-    '.service-card, .card, .accordion-item, ' +
-    '.philosophy-section *, .why-section *, .cta-section, .footer-section *'
-  );
-
-  revealElements.forEach(el => el.classList.add('reveal'));
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show'); // enables reverse on scroll up
-        }
-      });
-    },
-    {
-      threshold: 0.15,
-      rootMargin: '0px 0px -60px 0px'
-    }
-  );
-
-  revealElements.forEach(el => observer.observe(el));
-</script>
 </body>
 </html>

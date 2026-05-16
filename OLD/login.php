@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     }
 
     $stmt = $conn->prepare(
-        "SELECT id, full_name, username, phone, email, interest1, interest2, interest3, password, state, identity, profile_img 
+        "SELECT id, full_name, username, phone, email, interest1, interest2, interest3, password, state, identity, profile_img
          FROM users WHERE email = ?"
     );
     if (!$stmt) {
@@ -84,170 +84,174 @@ function redirectWithMessage($msg, $type) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <link rel="stylesheet" href="./CSS/main.css">
-    <link rel="stylesheet" href="./CSS/signup.css">
-    <link rel="icon" type="image/x-icon" href="/assets/img/logox.ico">
-    <link rel="icon" href="/favicon.ico">
+  <title>Login | ConsultME</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cobalt: '#2563eb',
+            accent: '#0ea5e9',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    body {
+      background: linear-gradient(135deg, #0a0f1e 0%, #0d1a3a 50%, #0a1628 100%);
+      min-height: 100vh;
+    }
+    .glass-card { position: relative; overflow: hidden; }
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at 30% 0%, rgba(37,99,235,0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .form-input {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      color: white;
+      padding: 13px 16px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+    }
+    .form-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.22);
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.3); }
+  </style>
 </head>
-<body>
-    <!-- Navigation bar start -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-    
-        <!-- Logo -->
-        <a class="navbar-brand" href="https://consultmee.in">
-          <img src="./assets/img/logo.png" alt="Logo" class="navbar-logo">
+<body class="text-white flex flex-col min-h-screen">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="https://consultmee.in">
+          <img src="./assets/img/logo.png" alt="ConsultME" class="h-9 w-auto">
         </a>
-    
-        <!-- Mobile Toggle -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <!-- Collapsible Content -->
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    
-          <!-- Nav links (right after logo) -->
-          <div class="navbar-nav text-center">
-            <a class="nav-link active" aria-current="page" href="https://consultmee.in">Home</a>
-            <a class="nav-link" href="./services">Services</a>
-            <a class="nav-link" href="./about">About us</a>
-            <a class="nav-link" href="./contact">Contact us</a>
-          </div>
-    
-          <!-- Auth Buttons (right aligned) -->
-          <div class="d-flex gap-2 justify-content-center ms-lg-auto mt-lg-0 mt-3">
-            <a href="create-account" class="btn btn-outline-primary">Signup</a>
-            <a href="login-account" class="btn btn-outline-dark">Login</a>
-          </div>
-    
+        <div class="hidden md:flex items-center gap-6">
+          <a href="https://consultmee.in" class="text-white/70 text-sm hover:text-white transition-colors">Home</a>
+          <a href="./services" class="text-white/70 text-sm hover:text-white transition-colors">Services</a>
+          <a href="./about" class="text-white/70 text-sm hover:text-white transition-colors">About Us</a>
+          <a href="./contact" class="text-white/70 text-sm hover:text-white transition-colors">Contact</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="create-account" class="px-4 py-2 rounded-full border border-white/30 text-white text-sm hover:bg-white/10 transition-all">Sign Up</a>
         </div>
       </div>
-    </nav>
-    <!-- Navigation bar end -->
-
-    <!--Login Section Starts-->
-    <div class="container">
-        <h2>Login - ConsultME</h2>
-        <div class="card" style="width: 35rem;">
-            <div class="card-body">
-                <form method="post" action="login.php">
-                    <label>Email</label>
-                    <input type="email" name="email" required>
-        
-                    <label>Password</label>
-                    <input type="password" name="password" required>
-
-                    <button type="submit" name="login" style="width: 10rem;">Login</button>
-                </form>
-                <br>
-                <div id="messageBox" style="text-align: center;"></div>     
-                <div class="link">
-                    <p>Don't have an account? <a href="./signup.php">Sign up</a></p>
-                </div>
-                <div class="link">
-                    <p>forgot password? <a href="./forgot_password">Reset</a></p>
-                </div>
-            </div>
-        </div>
     </div>
-    <!--Login Section Ends-->
-    <br>
-    <br>
-    <!-- Footer -->
-      <footer style="padding: 40px 0; color: black; background-color:lavender;" role="contentinfo">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3 mb-4">
-              <img src="./assets/img/logo.png" alt="ConsultMe Logo" style="height: 70px;">
-              <p class="mt-3" style="font-size: 14px;">
-                ConsultMe: Your partner in smart, AI-powered business consulting. Accelerate your growth with innovation-driven solutions.
-              </p>
-            </div>
-            <div class="col-md-3 mb-4">
-              <h5 style="color: #1dd186;">Quick Links</h5>
-              <ul class="list-unstyled">
-                <li><a href="./about" class="text-decoration-none">About Us</a></li>
-                <li><a href="./contact" class="text-decoration-none">Contact Us</a></li>
-                <li><a href="./services" class="text-decoration-none">Our Services</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 mb-4">
-              <h5 style="color: #1dd186;">Get Involved</h5>
-              <ul class="list-unstyled">
-                <li><a href="csignup.php" class="text-decoration-none">Become a Freelancer</a></li>
-                <li><a href="clogin.php" class="text-decoration-none">Freelancer Login</a></li>
-                <li><a href="contact" class="text-decoration-none">Contact</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 mb-4">
-              <h5 style="color: #1dd186;">Contact Us</h5>
-              <ul class="list-unstyled">
-                <li>
-                    <address>
-                        <i class="bi bi-geo-alt-fill text-success me-2"></i> 2066 2nd Floor, Nazarbaug Palace 
-                        Mandvi, Near Mandvi Gate, Vadodara
-                        Gujarat, India 390001
-                    </address>
-                </li>
-                <li><i class="bi bi-telephone-fill text-success me-2"></i> +91 8317818107</li>
-                <li><i class="bi bi-envelope-fill text-success me-2"></i> info@consultmee.in</li>
-              </ul>
+  </nav>
+
+  <!-- LOGIN CARD -->
+  <main class="flex-1 flex items-center justify-center px-4 pt-24 pb-16">
+    <div class="w-full max-w-md">
+
+      <!-- Logo + title -->
+      <div class="text-center mb-8">
+        <img src="./assets/img/logo.png" alt="ConsultME" class="h-12 w-auto mx-auto mb-5">
+        <h1 class="text-2xl font-black mb-1">Welcome back</h1>
+        <p class="text-white/50 text-sm">Sign in to your ConsultME account</p>
+      </div>
+
+      <!-- Card -->
+      <div class="glass-card bg-white/8 backdrop-blur-xl border border-white/15 rounded-3xl p-8 shadow-2xl">
+
+        <!-- Message box -->
+        <div id="messageBox" class="mb-4 text-center text-sm font-medium hidden"></div>
+
+        <form method="post" action="login.php" class="flex flex-col gap-5">
+
+          <div>
+            <label class="block text-sm font-semibold mb-2 text-white/80">Email Address</label>
+            <div class="relative">
+              <i class="bi bi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
+              <input type="email" name="email" class="form-input pl-11" placeholder="your@email.com" required>
             </div>
           </div>
-          <hr>
-          <div class="text-center">
-            <small>&copy; <span style="color: #1dd186;">ConsultME</span>, All rights reserved.</small>
+
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="text-sm font-semibold text-white/80">Password</label>
+              <a href="./forgot_password" class="text-xs text-accent hover:text-white transition-colors">Forgot password?</a>
+            </div>
+            <div class="relative">
+              <i class="bi bi-lock absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
+              <input type="password" name="password" id="passwordField" class="form-input pl-11 pr-11" placeholder="Enter your password" required>
+              <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/70 transition-colors">
+                <i class="bi bi-eye" id="eyeIcon"></i>
+              </button>
+            </div>
           </div>
+
+          <button type="submit" name="login" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cobalt to-accent text-white font-semibold hover:-translate-y-0.5 transition-all shadow-xl shadow-blue-500/30 mt-2">
+            Sign In <i class="bi bi-arrow-right ml-1"></i>
+          </button>
+
+        </form>
+
+        <div class="mt-6 flex flex-col gap-3 text-center">
+          <p class="text-white/50 text-sm">
+            Don't have an account? <a href="./signup.php" class="text-accent hover:text-white font-medium transition-colors">Sign up</a>
+          </p>
+          <p class="text-white/30 text-xs">
+            Are you a consultant? <a href="./clogin.php" class="text-white/50 hover:text-white transition-colors">Consultant Login</a>
+          </p>
         </div>
-      </footer>
-    <!--Footer End-->
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const msg = urlParams.get('msg');
-        const type = urlParams.get('type');
-    
-        if (msg) {
-          const box = document.getElementById('messageBox');
-          box.innerHTML = decodeURIComponent(msg);
-          box.style.color = (type === 'error') ? 'red' : 'green';
-        }
-    </script>
-    <!--Scroll Pop Up Logic-->
-    <script>
-      const revealElements = document.querySelectorAll(
-        '.hero-left h4, .hero-left h1, .hero-desc, .hero-cta, ' +
-        '.service-card, .card, .accordion-item, ' +
-        '.philosophy-section *, .why-section *, .cta-section, .footer-section *'
-      );
-    
-      revealElements.forEach(el => el.classList.add('reveal'));
-    
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('show');
-            } else {
-              entry.target.classList.remove('show'); // enables reverse on scroll up
-            }
-          });
-        },
-        {
-          threshold: 0.15,
-          rootMargin: '0px 0px -60px 0px'
-        }
-      );
-    
-      revealElements.forEach(el => observer.observe(el));
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const msg = urlParams.get('msg');
+    const type = urlParams.get('type');
+    if (msg) {
+      const box = document.getElementById('messageBox');
+      box.classList.remove('hidden');
+      box.innerHTML = decodeURIComponent(msg);
+      box.style.color = (type === 'error') ? '#f87171' : '#34d399';
+      box.style.background = (type === 'error') ? 'rgba(239,68,68,0.1)' : 'rgba(52,211,153,0.1)';
+      box.style.padding = '10px 16px';
+      box.style.borderRadius = '10px';
+      box.style.border = (type === 'error') ? '1px solid rgba(239,68,68,0.3)' : '1px solid rgba(52,211,153,0.3)';
+    }
+    function togglePassword() {
+      const field = document.getElementById('passwordField');
+      const icon = document.getElementById('eyeIcon');
+      if (field.type === 'password') {
+        field.type = 'text';
+        icon.className = 'bi bi-eye-slash';
+      } else {
+        field.type = 'password';
+        icon.className = 'bi bi-eye';
+      }
+    }
+  </script>
 </body>
 </html>
